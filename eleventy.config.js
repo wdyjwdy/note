@@ -10,7 +10,7 @@ export default async function (eleventyConfig) {
 }
 
 export const config = {
-  pathPrefix: "/exegesis/",
+  pathPrefix: "/note/",
 };
 
 function getForms(content) {
