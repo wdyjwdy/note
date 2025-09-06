@@ -1,0 +1,13 @@
+{
+  "name": "note",
+  "main": "index.js",
+  "scripts": {
+    "dev": "pnpm exec eleventy --serve",
+    "build": "npx @11ty/eleventy"
+  },
+  "type": "module",
+  "packageManager": "pnpm@10.8.0",
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.2"
+  }
+}
