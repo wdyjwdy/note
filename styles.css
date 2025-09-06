@@ -1,3 +1,23 @@
+:root {
+    @media (prefers-color-scheme: light) {
+        --body-bg: oklch(0.99 0 0);
+        --body-color: oklch(0.37 0 0);
+        --examples-bg: white;
+        --examples-border: lightgray;
+        --forms-bg: oklch(0.96 0 0);
+        --forms-border: oklch(0.9 0 0);
+    }
+
+    @media (prefers-color-scheme: dark) {
+        --body-bg: oklch(0.2 0 0);
+        --body-color: oklch(0.8 0 0);
+        --examples-bg: oklch(0.18 0 0);
+        --examples-border: oklch(0.26 0 0);
+        --forms-bg: oklch(0.24 0 0);
+        --forms-border: oklch(0.32 0 0);
+    }
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,8 +25,8 @@
 
 html {
     font-size: 20px;
-    color: oklch(0.37 0 0);
-    background-color: oklch(0.99 0 0);
+    color: var(--body-color);
+    background-color: var(--body-bg);
 }
 
 body {
@@ -14,13 +34,11 @@ body {
 }
 
 h1 {
-    color: oklch(0.37 0 0);
     margin: 20px 0;
     text-align: center;
 }
 
 h2 {
-    color: oklch(0.37 0 0);
     margin: 20px 0;
 }
 
@@ -57,8 +75,8 @@ img {
         padding: 0 2px;
         margin-right: 4px;
         border-radius: 8px;
-        border: 1px solid #e0e0e0;
-        background-color: #f6f6f6;
+        border: 1px solid var(--forms-border);
+        background-color: var(--forms-bg);
     }
 }
 
@@ -66,8 +84,8 @@ img {
     margin: 20px 0;
     padding: 6px 10px;
     border-radius: 8px;
-    border: 1px solid lightgray;
-    background-color: white;
+    border: 1px solid var(--examples-border);
+    background-color: var(--examples-bg);
 
     span:nth-child(2) {
         color: #9e9e9e;
