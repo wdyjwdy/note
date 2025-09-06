@@ -1,10 +1,14 @@
-import { HtmlBasePlugin } from "@11ty/eleventy";
+import { HtmlBasePlugin, IdAttributePlugin } from "@11ty/eleventy";
 
 export default async function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("imgs");
   eleventyConfig.addPassthroughCopy("styles.css");
   eleventyConfig.addPassthroughCopy("icon.svg");
+
   eleventyConfig.addPlugin(HtmlBasePlugin);
+  eleventyConfig.addPlugin(IdAttributePlugin, {
+    slugify: getSlugify,
+  });
 
   eleventyConfig.addPairedShortcode("forms", getForms);
   eleventyConfig.addPairedShortcode("examples", getExamples);
@@ -33,4 +37,8 @@ function getExamples(content) {
     })
     .join("");
   return `<div class="examples">${examples}</div>`;
+}
+
+function getSlugify(text) {
+  return text;
 }
