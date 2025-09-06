@@ -13,4 +13,4 @@ title: て ある
 部屋を掃除してありますか。#地扫了吗？
 {% endexamples %}
 
-[「ている・てある」的区别](../grammar/diff#ている-てある)
+[「ている・てある」的区别](/grammar-diff/teiru-tearu)

@@ -2,7 +2,7 @@
 title: こ・そ・あ・ど
 ---
 
-![position](/grammar-position.svg)
+![ko-so-a-do](/imgs/grammar-list-ko-so-a-do.svg)
 
 ## この-ここ-これ-こう
 

@@ -2,13 +2,13 @@
 title: あげる・もらう・くれる
 ---
 
-![ageru-morau-kureru](/vocab-compare-ageru-morau-kureru.svg)
+![ageru-morau-kureru](/imgs/grammar-diff-ageru-morau-kureru.svg)
 
 - **あげる**：我给别人，别人给别人
 - **もらう**：我收到，别人收到
 - **くれる**：别人给我
 
-{% examples %} #我和太郎
+{% examples %}
 私は太郎に果物をあげる。#我给太郎水果。
 私は太郎に果物をもらう。#我收到太郎的水果。
 太郎は私に果物をくれる。#太郎给我水果。#太郎和樱

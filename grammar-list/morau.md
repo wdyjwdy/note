@@ -14,7 +14,7 @@ title: もらう
 私は彼から花を買ってもらいました。#我收到了他买的花。
 {% endexamples %}
 
-[「あげる・もらう・くれる」的区别](../grammar/diff#あげるもらうくれる)
+[「あげる・もらう・くれる」的区别](/grammar-diff/ageru-morau-kureru)
 
 敬语使用「いただきます」。
 

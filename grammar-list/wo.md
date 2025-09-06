@@ -8,7 +8,7 @@ title: を
 靴を買う。#买鞋。
 {% endexamples %}
 
-[「を・に」的区别](./diff#をに)
+[「を・に」的区别](/grammar-diff/wo-ni)
 
 ## 离开或经过的场所
 
@@ -27,7 +27,7 @@ title: を
 公園を散歩する。#去公园散步。
 {% endexamples %}
 
-[「を・に」的区别](./diff#をに)
+[「を・に」的区别](/grammar-diff/wo-ni)
 
 ## 物体的外貌
 

@@ -14,4 +14,4 @@ title: ように
 風が入るように、窓を開けた。#为了让风进来，打开了窗户。
 {% endexamples %}
 
-[「ために・ように」的区别](../grammar/diff#ためにように)
+[「ために・ように」的区别](/grammar-diff/tameni-youni)

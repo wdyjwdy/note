@@ -14,7 +14,7 @@ title: くれる
 彼は私に牛乳を買ってくれました。#他给我买了牛奶。
 {% endexamples %}
 
-[「あげる・もらう・くれる」的区别](../grammar/diff#あげる-もらう-くれる)
+[「あげる・もらう・くれる」的区别](/grammar-diff/ageru-morau-kureru)
 
 敬语使用「くださいます」。
 

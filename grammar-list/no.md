@@ -13,4 +13,4 @@ title: の
 話しているのが聞こえる。#能听到有人说话。
 {% endexamples %}
 
-[「の・こと」的区别](./diff#のこと)
+[「の・こと」的区别](/grammar-diff/no-koto)

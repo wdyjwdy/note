@@ -8,7 +8,7 @@ title: に
 池に魚がいる。#池里有鱼。
 {% endexamples %}
 
-[「で・に」的区别](../grammar/diff#でに)
+[「で・に」的区别](/grammar-diff/de-ni)
 
 ## 动作作用的场所
 
@@ -16,7 +16,7 @@ title: に
 ここに書いてください。#请写在这里。
 {% endexamples %}
 
-[「で・に」的区别](../grammar/diff#でに)
+[「で・に」的区别](/grammar-diff/de-ni)
 
 ## 进入的场所
 
@@ -26,7 +26,7 @@ title: に
 日本に行く。#去日本。
 {% endexamples %}
 
-[「を・に」的区别](../grammar/diff#をに)
+[「を・に」的区别](/grammar-diff/wo-ni)
 
 ## 动作的对象
 
@@ -36,7 +36,7 @@ title: に
 彼女に花をあげる。#给她花。
 {% endexamples %}
 
-[「を・に」的区别](../grammar/diff#をに)
+[「を・に」的区别](/grammar-diff/wo-ni)
 
 ## 动作发生的时刻
 

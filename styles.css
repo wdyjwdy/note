@@ -48,6 +48,10 @@ strong {
     color: steelblue;
 }
 
+img {
+    max-width: 100%;
+}
+
 .forms {
     span {
         padding: 0 2px;

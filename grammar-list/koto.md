@@ -22,4 +22,4 @@ title: こと
 趣味は食べることです。#兴趣是吃东西。
 {% endexamples %}
 
-[「の・こと」的区别](./diff#のこと)
+[「の・こと」的区别](/grammar-diff/no-koto)

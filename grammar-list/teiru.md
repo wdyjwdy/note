@@ -15,7 +15,7 @@ title: て いる
 ご飯を食べている。#正在吃饭。
 {% endexamples %}
 
-当前的状态。[状态和意志的区别](./diff#状态意志)。
+当前的状态。[状态和意志的区别](/grammar-diff/zhuangtai-yizhi)。
 
 {% examples %}
 椅子に座っている。#坐在椅子上。
@@ -42,7 +42,7 @@ title: て いる
 彼は今出かけている。#他现在出去了。
 {% endexamples %}
 
-[「ている・てある」的区别](../grammar/diff#ている-てある)
+[「ている・てある」的区别](/grammar-diff/teiru-tearu)
 
 ## 本应完成的事情还未完成
 
