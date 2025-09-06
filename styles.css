@@ -39,6 +39,15 @@ a:hover {
     text-decoration-line: underline;
 }
 
+ul {
+    padding-left: 20px;
+    list-style-type: circle;
+}
+
+strong {
+    color: steelblue;
+}
+
 .forms {
     span {
         padding: 0 2px;

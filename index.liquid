@@ -10,6 +10,8 @@
     <body>
         <h1>日语学习笔记</h1>
         <h2>语法</h2>
-        {% for grammar in collections.grammars %}<a href="{{grammar.url}}">{{grammar.data.title}}</a>{% unless forloop.last %}、{% endunless %}{% endfor %}
+        {% for grammar in collections.grammar-list %}<a href="{{grammar.url}}">{{grammar.data.title}}</a>{% unless forloop.last %}、{% endunless %}{% endfor %}
+        <h2>近义语法对比</h2>
+        {% for grammar in collections.grammar-diff %}<a href="{{grammar.url}}">{{grammar.data.title}}</a>{% unless forloop.last %}、{% endunless %}{% endfor %}
     </body>
 </html>

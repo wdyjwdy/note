@@ -9,7 +9,7 @@ title: は
 友達とは会う。#和朋友见面。
 {% endexamples %}
 
-[「は・が」的区别](../grammar/diff#はが)
+[「は・が」的区别](/grammar-diff/ha-ga)
 
 ## 叙述客观事实
 
