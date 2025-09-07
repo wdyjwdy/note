@@ -82,6 +82,8 @@ img {
 }
 
 .forms {
+    margin: 20px 0;
+
     span {
         padding: 0 2px;
         margin-right: 4px;
