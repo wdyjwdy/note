@@ -1,11 +1,11 @@
 ---
-title: ところ
+title: ところだ
 ---
 
 ## 即将做
 
 {% forms %}
-〔字典形〕ところ
+〔字典形〕ところだ
 {% endforms %}
 
 {% examples %}
@@ -16,7 +16,7 @@ title: ところ
 ## 正在做
 
 {% forms %}
-〔て形いる〕ところ
+〔ている〕ところだ
 {% endforms %}
 
 {% examples %}
@@ -26,7 +26,7 @@ title: ところ
 ## 刚做完
 
 {% forms %}
-〔た形〕ところ
+〔た形〕ところだ
 {% endforms %}
 
 {% examples %}

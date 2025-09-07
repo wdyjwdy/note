@@ -14,7 +14,7 @@ title: あげる
 私は彼女に花を買ってあげました。#我给她买了花。
 {% endexamples %}
 
-[「あげる・もらう・くれる」的区别](/grammar-diff/ageru-morau-kureru)
+- 参考：[「あげる・もらう・くれる」的区别](/grammar-diff/ageru-morau-kureru)
 
 敬语使用「さしあげます」。
 
