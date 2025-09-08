@@ -4,7 +4,32 @@ title: 使役形
 
 ## 强迫别人做某事
 
+{% forms %}
+〔使役形〕
+{% endforms %}
+
 {% examples %}
 彼に牛乳を買わされました。#我让他去买了牛奶。
+{% endexamples %}
+
+## 引发某种情感
+
+{% forms %}
+〔使役形〕
+{% endforms %}
+
+{% examples %}
 彼を怒らせてしまった。#让他生气了。
 {% endexamples %}
+
+## 允许某种行为
+
+{% forms %}
+〔使役形〕
+{% endforms %}
+
+{% examples %}
+犬を自由に遊ばせる。#让狗自由的玩耍。
+{% endexamples %}
+
+关于助词，自动词用「を」，他动词用「に」。

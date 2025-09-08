@@ -9,14 +9,21 @@ title: くれる
 〔て形〕くれる
 {% endforms %}
 
+别人给我。
+
 {% examples %}
 彼は私に牛乳をくれました。#他给了我牛奶。
 彼は私に牛乳を買ってくれました。#他给我买了牛奶。
 {% endexamples %}
 
-[「あげる・もらう・くれる」的区别](/grammar-diff/ageru-morau-kureru)
+- 参考：对比「[あげる・もらう・くれる](/grammar-diff/ageru-morau-kureru)」，近义词「[もらう](../morau)・[あげる](../ageru)」。
 
-敬语使用「くださいます」。
+{% forms %}
+〔名词〕をくださいます
+〔て形〕くださいます
+{% endforms %}
+
+「くれる」的敬语。
 
 {% examples %}
 先生は私にお土産をくださいました。#老师给了我礼物。

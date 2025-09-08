@@ -4,9 +4,9 @@ title: あげる・もらう・くれる
 
 ![ageru-morau-kureru](/imgs/grammar-diff-ageru-morau-kureru.svg)
 
-- **あげる**：我给别人，别人给别人
-- **もらう**：我收到，别人收到
-- **くれる**：别人给我
+- 「[あげる](/grammar-list/ageru)」：我给别人，别人给别人。
+- 「[もらう](/grammar-list/morau)」：我收到，别人收到。
+- 「[くれる](/grammar-list/kureru)」：别人给我。
 
 {% examples %}
 私は太郎に果物をあげる。#我给太郎水果。

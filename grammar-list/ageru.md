@@ -9,14 +9,21 @@ title: あげる
 〔て形〕あげる
 {% endforms %}
 
+我给别人，别人给别人。
+
 {% examples %}
 私は彼女に花をあげました。#我给了她花。
 私は彼女に花を買ってあげました。#我给她买了花。
 {% endexamples %}
 
-- 参考：[「あげる・もらう・くれる」的区别](/grammar-diff/ageru-morau-kureru)
+- 参考：对比「[あげる・もらう・くれる](/grammar-diff/ageru-morau-kureru)」，近义词「[もらう](../morau)・[くれる](../kureru)」。
 
-敬语使用「さしあげます」。
+{% forms %}
+〔名词〕をさしあげます
+〔て形〕さしあげます
+{% endforms %}
+
+「あげる」的敬语。
 
 {% examples %}
 私は先生にお土産をさしあげました。#我给了老师礼物。

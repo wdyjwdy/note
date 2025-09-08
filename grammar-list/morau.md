@@ -9,14 +9,21 @@ title: もらう
 〔て形〕もらう
 {% endforms %}
 
+我收到，别人收到。
+
 {% examples %}
 私は彼に花をもらいました。#我收到了他给的花。
 私は彼から花を買ってもらいました。#我收到了他买的花。
 {% endexamples %}
 
-[「あげる・もらう・くれる」的区别](/grammar-diff/ageru-morau-kureru)
+- 参考：对比「[あげる・もらう・くれる](/grammar-diff/ageru-morau-kureru)」，近义词「[くれる](../kureru)・[あげる](../ageru)」。
 
-敬语使用「いただきます」。
+{% forms %}
+〔名词〕をいただきます
+〔て形〕いただきます
+{% endforms %}
+
+「もらう」的敬语。
 
 {% examples %}
 私は先生にお土産をいただきました。#我收到了老师给的礼物。
