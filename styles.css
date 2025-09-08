@@ -96,6 +96,21 @@ img {
     max-width: 100%;
 }
 
+input {
+    all: unset;
+    border: 1px solid;
+    border-radius: 6px;
+    width: calc(100% - 20px);
+    padding: 8px;
+}
+
+#result {
+    margin: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
 .forms {
     margin: 20px 0;
 

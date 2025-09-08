@@ -3,6 +3,7 @@ import { HtmlBasePlugin, IdAttributePlugin } from "@11ty/eleventy";
 export default async function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("imgs");
   eleventyConfig.addPassthroughCopy("styles.css");
+  eleventyConfig.addPassthroughCopy("search.js");
   eleventyConfig.addPassthroughCopy("icon.svg");
 
   eleventyConfig.addPlugin(HtmlBasePlugin);
