@@ -53,6 +53,8 @@ title: て
 旅行に行けなくて、残念です。#因为没能去旅游，所以很遗憾。
 {% endexamples %}
 
+- 参考：「[から・ので・て](/grammar-diff/kara-node-te)」的区别
+
 ## 在某种状态下
 
 {% examples %}

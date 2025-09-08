@@ -14,6 +14,8 @@ title: から
 寒いからです。コートを着ています。#因为很冷，所以穿着外套。
 {% endexamples %}
 
+- 参考：「[から・ので・て](/grammar-diff/kara-node-te)」的区别
+
 ## 动作先后顺序
 
 {% forms %}

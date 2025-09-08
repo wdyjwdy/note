@@ -44,6 +44,11 @@ h2 {
     margin: 20px 0;
 }
 
+h2:target {
+    background-color: oklch(0.63 0.07 242 / 0.2);
+    border-radius: 10px;
+}
+
 p {
     line-height: 2em;
 }

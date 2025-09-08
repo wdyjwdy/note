@@ -5,7 +5,7 @@ title: ても
 ## 即使也
 
 {% forms %}
-〔简体て形〕
+〔简体て形〕も
 {% endforms %}
 
 {% examples %}
