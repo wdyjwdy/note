@@ -4,10 +4,6 @@ title: ている
 
 ## 动作持续进行
 
-{% forms %}
-〔て形〕
-{% endforms %}
-
 正在做某事。
 
 {% examples %}
@@ -15,7 +11,7 @@ title: ている
 ご飯を食べている。#正在吃饭。
 {% endexamples %}
 
-当前的状态。[状态和意志的区别](/grammar-diff/zhuangtai-yizhi)。
+当前的状态。
 
 {% examples %}
 椅子に座っている。#坐在椅子上。
@@ -23,7 +19,7 @@ title: ている
 大学で英語を教えている。#在大学教英语。
 {% endexamples %}
 
-习惯性的动作。
+长期重复的动作。
 
 {% examples %}
 毎日日記を書いている。#每天都写日记。
@@ -32,17 +28,13 @@ title: ている
 
 ## 动作的结果仍在持续
 
-{% forms %}
-〔自动词て形〕
-{% endforms %}
-
 {% examples %}
 彼は日本へ行っている。#他去了中国。
 彼女は着物を着ている。#她穿着和服。
 彼は今出かけている。#他现在出去了。
 {% endexamples %}
 
-[「ている・てある」的区别](/grammar-diff/teiru-tearu)
+- 对比「[ている・てある](/grammar-diff/teiru-tearu)」
 
 ## 本应完成的事情还未完成
 
