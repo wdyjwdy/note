@@ -134,6 +134,22 @@ input {
     }
 }
 
+.tags {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+
+    button {
+        all: unset;
+        padding: 4px 10px;
+        background-color: var(--forms-bg);
+        border-radius: 10px;
+        touch-action: none;
+        cursor: pointer;
+    }
+}
+
 .result {
     margin: 20px 0;
     display: flex;
