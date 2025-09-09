@@ -139,6 +139,11 @@ input {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+
+    p {
+        flex-basis: 100%;
+        border-bottom: 1px solid var(--button-border);
+    }
 }
 
 .forms {

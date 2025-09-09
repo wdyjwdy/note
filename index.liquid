@@ -9,30 +9,20 @@
         <title>note</title>
     </head>
     <body>
-        <h1>日语学习笔记</h1>
+        <h1>ノート</h1>
         <div class="search">
           <div><i data-lucide="search"></i></div>
           <input type="text" id="search">
         </div>
         <div class="result"></div>
-        <h2>语法</h2>
-        {% for grammar in collections.grammar-list %}<a href="{{grammar.url}}">{{grammar.data.title}}</a>{% unless forloop.last %}、{% endunless %}{% endfor %}
-        <h2>近义语法对比</h2>
-        {% for grammar in collections.grammar-diff %}<a href="{{grammar.url}}">{{grammar.data.title}}</a>{% unless forloop.last %}、{% endunless %}{% endfor %}
-        <h2>高频词</h2>
-        {% for vocab in collections.vocab-list %}<a href="{{vocab.url}}">{{vocab.data.title}}</a>{% unless forloop.last %}、{% endunless %}{% endfor %}
-        <h2>近义词对比</h2>
-        {% for vocab in collections.vocab-diff %}<a href="{{vocab.url}}">{{vocab.data.title}}</a>{% unless forloop.last %}、{% endunless %}{% endfor %}
-        <h2>发音与听力</h2>
-        {% for c in collections.speaking-listening %}<a href="{{c.url}}">{{c.data.title}}</a>{% unless forloop.last %}、{% endunless %}{% endfor %}
         <script src="https://unpkg.com/lucide@latest"></script>
         <script>
           lucide.createIcons();
           const data = [
-            {% for grammar in collections.grammar-list %}
+            {% for post in collections.all %}
               {
-                title: "{{ grammar.data.title }}",
-                url: "{{ grammar.url }}"
+                title: "{{ post.data.title }}",
+                url: "{{ post.url }}"
               }{% if forloop.last == false %},{% endif %}
             {% endfor %}
           ];

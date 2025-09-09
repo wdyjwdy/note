@@ -2,7 +2,7 @@
   "name": "note",
   "main": "index.js",
   "scripts": {
-    "dev": "pnpm exec eleventy --serve",
+    "dev": "pnpm exec eleventy --serve --quiet",
     "build": "npx @11ty/eleventy"
   },
   "type": "module",
