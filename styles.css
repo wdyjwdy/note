@@ -7,6 +7,9 @@
         --examples-trans: oklch(0.7 0 0);
         --forms-bg: oklch(0.96 0 0);
         --forms-border: oklch(0.9 0 0);
+        --button-bg: oklch(0.98 0 0);
+        --button-border: oklab(0.9 0 0);
+        --button-text: oklch(0 0 0);
     }
 
     @media (prefers-color-scheme: dark) {
@@ -17,6 +20,9 @@
         --examples-trans: oklch(0.5 0 0);
         --forms-bg: oklch(0.3 0 0);
         --forms-border: oklch(0.4 0 0);
+        --button-bg: oklch(0.24 0 0);
+        --button-border: oklch(0.4 0 0);
+        --button-text: oklch(0.57 0 0);
     }
 }
 
@@ -104,7 +110,31 @@ input {
     padding: 8px;
 }
 
-#result {
+.search {
+    display: flex;
+    color: var(--button-text);
+
+    div {
+        background-color: var(--button-bg);
+        border: 1px solid var(--button-border);
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px;
+        display: flex;
+        padding: 8px;
+    }
+
+    input {
+        all: unset;
+        border: 1px solid var(--button-border);
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
+        border-left: none;
+        padding: 8px;
+        width: 100%;
+    }
+}
+
+.result {
     margin: 20px 0;
     display: flex;
     flex-wrap: wrap;
