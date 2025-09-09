@@ -2,7 +2,7 @@
 title: の
 ---
 
-## 变为名词
+## 名词化
 
 {% forms %}
 〔简体・な形な〕
@@ -13,4 +13,4 @@ title: の
 話しているのが聞こえる。#能听到有人说话。
 {% endexamples %}
 
-[「の・こと」的区别](/grammar-diff/no-koto)
+- 对比「[の・こと](/grammar-diff/no-koto#名词化)」

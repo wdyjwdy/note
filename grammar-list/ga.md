@@ -9,4 +9,4 @@ title: が
 何曜日が一番忙しいですか。#星期几最忙？
 {% endexamples %}
 
-[「は・が」的区别](/grammar-diff/ha-ga)
+- 对比：「[は・が](/grammar-diff/ha-ga#强调)」
