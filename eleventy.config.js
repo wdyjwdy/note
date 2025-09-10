@@ -2,9 +2,7 @@ import { HtmlBasePlugin, IdAttributePlugin } from "@11ty/eleventy";
 
 export default async function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("imgs");
-  eleventyConfig.addPassthroughCopy("styles.css");
-  eleventyConfig.addPassthroughCopy("search.js");
-  eleventyConfig.addPassthroughCopy("icon.svg");
+  eleventyConfig.addPassthroughCopy("src");
 
   eleventyConfig.addPlugin(HtmlBasePlugin);
   eleventyConfig.addPlugin(IdAttributePlugin, {
@@ -13,6 +11,7 @@ export default async function (eleventyConfig) {
 
   eleventyConfig.addPairedShortcode("forms", getForms);
   eleventyConfig.addPairedShortcode("examples", getExamples);
+  eleventyConfig.addPairedShortcode("verses", getVerses);
 }
 
 export const config = {
@@ -38,6 +37,11 @@ function getExamples(content) {
     })
     .join("");
   return `<div class="examples">${examples}</div>`;
+}
+
+function getVerses(content) {
+  const [verse, ref] = content.split("\n").filter((v) => v);
+  return `<div class="verses box"><span>${verse}</span><span>${ref}</span></div>`;
 }
 
 function getSlugify(text) {
