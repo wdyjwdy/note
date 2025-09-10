@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" href="/src/icon.svg" type="image/svg+xml">
+        <link rel="icon" href="/src/search.svg" type="image/svg+xml">
         <link rel="stylesheet" href="/src/index.css" />
         <script src="/src/search.js" defer></script>
         <title>note</title>
@@ -11,14 +11,14 @@
     <body>
         <h1>ノート</h1>
         <div class="search">
-          <div><i data-lucide="search"></i></div>
+          <div>
+              <img src="/src/search.svg" alt="Search">
+          </div>
           <input type="text" id="search">
         </div>
         <div class="tags"></div>
         <div class="result"></div>
-        <script src="https://unpkg.com/lucide@latest"></script>
         <script>
-          lucide.createIcons();
           const data = [
             {% for post in collections.all %}
               {
