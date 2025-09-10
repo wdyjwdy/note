@@ -11,7 +11,6 @@ export default async function (eleventyConfig) {
 
   eleventyConfig.addPairedShortcode("forms", getForms);
   eleventyConfig.addPairedShortcode("examples", getExamples);
-  eleventyConfig.addPairedShortcode("verses", getVerses);
 }
 
 export const config = {
@@ -32,16 +31,11 @@ function getExamples(content) {
     .split("\n")
     .filter((e) => e)
     .map((e) => {
-      const [text, trans] = e.split("#");
-      return `<p><span>${text}</span><span>${trans}</span></p>`;
+      const [a, b] = e.split("#");
+      return `<p><span>${a}</span><span>${b}</span></p>`;
     })
     .join("");
   return `<div class="examples">${examples}</div>`;
-}
-
-function getVerses(content) {
-  const [verse, ref] = content.split("\n").filter((v) => v);
-  return `<div class="verses box"><span>${verse}</span><span>${ref}</span></div>`;
 }
 
 function getSlugify(text) {

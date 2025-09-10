@@ -1,3 +1,86 @@
+:root {
+    @media (prefers-color-scheme: light) {
+        --body-bg: oklch(0.99 0 0);
+        --body-color: oklch(0.37 0 0);
+        --verses-bg: oklch(1 0 0);
+        --verses-border: oklch(0.87 0 0);
+        --tag-bg: oklch(0.96 0 0);
+        --tag-border: oklch(0.9 0 0);
+    }
+
+    @media (prefers-color-scheme: dark) {
+        --body-bg: oklch(0.26 0 0);
+        --body-color: oklch(0.8 0 0);
+        --verses-bg: oklch(0.22 0 0);
+        --verses-border: oklch(0.3 0 0);
+        --tag-bg: oklch(0.3 0 0);
+        --tag-border: oklch(0.4 0 0);
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 20px;
+    color: var(--body-color);
+    background-color: var(--body-bg);
+}
+
+body {
+    padding: 20px;
+}
+
+h1 {
+    margin: 20px 0;
+    text-align: center;
+}
+
+h2 {
+    margin: 20px 0;
+}
+
+p {
+    line-height: 2em;
+}
+
+a {
+    color: steelblue;
+    text-decoration-thickness: from-font;
+    text-underline-offset: 6px;
+    text-decoration-line: unset;
+}
+
+a:hover {
+    text-decoration-line: underline;
+}
+
+ul {
+    margin: 20px 0;
+    padding-left: 20px;
+    list-style-type: circle;
+}
+
+ol {
+    margin: 20px 0;
+    padding-left: 20px;
+}
+
+strong {
+    color: steelblue;
+}
+
+em {
+    font-style: normal;
+    color: indianred;
+}
+
+img {
+    max-width: 100%;
+}
+
 code {
     background-color: var(--tag-bg);
     border: 1px solid var(--tag-border);
@@ -5,7 +88,14 @@ code {
     padding: 0 10px;
     font-size: 0.8em;
 }
-.verses {
+
+.examples {
+    margin: 20px 0;
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: 1px solid var(--verses-border);
+    background-color: var(--verses-bg);
+
     span:nth-child(2) {
         color: steelblue;
     }
