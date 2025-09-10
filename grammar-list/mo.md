@@ -1,5 +1,6 @@
 ---
 title: も
+category: 语法
 ---
 
 ## 也

@@ -23,7 +23,9 @@
             {% for post in collections.all %}
               {
                 title: "{{ post.data.title }}",
-                url: "{{ post.url }}"
+                url: "{{ post.url }}",
+                category: "{{ post.data.category }}",
+                keys: "{{ post.data.keys }}"
               }{% if forloop.last == false %},{% endif %}
             {% endfor %}
           ];

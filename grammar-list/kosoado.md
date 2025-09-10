@@ -1,5 +1,6 @@
 ---
 title: こ・そ・あ・ど
+category: 语法
 ---
 
 ![ko-so-a-do](/imgs/grammar-list-ko-so-a-do.svg)

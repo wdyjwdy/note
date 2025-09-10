@@ -1,5 +1,6 @@
 ---
 title: の
+category: 语法
 ---
 
 ## 名词化

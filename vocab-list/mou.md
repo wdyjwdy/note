@@ -1,6 +1,6 @@
 ---
 title: もう
-tags: ["词汇"]
+category: 词汇
 ---
 
 ## 已经

@@ -1,5 +1,6 @@
 ---
 title: だけ
+category: 语法
 ---
 
 ## 只

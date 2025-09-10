@@ -1,6 +1,6 @@
 ---
 title: まだ
-tags: ["词汇"]
+category: 词汇
 ---
 
 ## 还没

@@ -1,5 +1,6 @@
 ---
 title: 貸す・借りる
+category: 词汇对比
 ---
 
 ![kasu-kariru](/imgs/vocab-diff-kasu-kariru.svg)

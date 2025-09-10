@@ -1,6 +1,6 @@
 ---
 title: きっと
-tags: ["词汇"]
+category: 词汇
 ---
 
 ## 一定

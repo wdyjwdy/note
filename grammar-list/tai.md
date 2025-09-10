@@ -1,5 +1,6 @@
 ---
 title: たい
+category: 语法
 ---
 
 ## 想要

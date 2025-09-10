@@ -1,6 +1,6 @@
 ---
 title: やっと
-tags: ["词汇"]
+category: 词汇
 ---
 
 ## 终于

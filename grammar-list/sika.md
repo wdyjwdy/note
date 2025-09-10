@@ -1,5 +1,6 @@
 ---
 title: しか
+category: 语法
 ---
 
 ## 只

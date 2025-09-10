@@ -1,5 +1,6 @@
 ---
 title: くれる
+category: 语法
 ---
 
 ## 给

@@ -147,6 +147,10 @@ input {
         border-radius: 10px;
         touch-action: none;
         cursor: pointer;
+
+        &:hover {
+            background-color: oklch(0.75 0 0 / 0.3);
+        }
     }
 }
 

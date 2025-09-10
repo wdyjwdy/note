@@ -2,21 +2,18 @@ const search = document.querySelector("#search");
 const tags = document.querySelector(".tags");
 const result = document.querySelector(".result");
 
-const tagSet = new Set(["all"]);
-data.forEach((x) => {
-  if (x.title) {
-    tagSet.add(x.url.split("/")[1]);
-  }
-});
-for (let tag of tagSet) {
+const pages = data.filter((x) => x.title);
+const categories = new Set(pages.map((x) => x.category));
+
+for (let category of categories) {
   const span = document.createElement("button");
-  span.textContent = tag;
+  span.textContent = category;
   tags.appendChild(span);
 }
+
 tags.addEventListener("click", function (event) {
   if (event.target.tagName === "BUTTON") {
-    const text = event.target.textContent;
-    search.value = text === "all" ? "" : text;
+    search.value = event.target.textContent;
     const enterEvent = new KeyboardEvent("keydown", {
       key: "Enter",
       code: "Enter",
@@ -30,17 +27,19 @@ search.addEventListener("keydown", function (event) {
   if (event.code === "Enter") {
     result.innerHTML = "";
     const query = this.value;
-    data
+    pages
       .filter(
-        (d) => (d.title && d.title.includes(query)) || d.url.includes(query),
+        (x) =>
+          x.title.includes(query) ||
+          x.category === query ||
+          x.keys.includes(query),
       )
-      .map((x) => ({ ...x, catagory: x.url.split("/")[1] }))
-      .sort((a, b) => (a.catagory < b.catagory ? 1 : -1))
+      .sort((a, b) => (a.category < b.category ? 1 : -1))
       .forEach((x, i, a) => {
-        const prevCatagory = a[i - 1]?.catagory;
-        if (x.catagory !== prevCatagory) {
+        const prevCategory = a[i - 1]?.category;
+        if (x.category !== prevCategory) {
           const p = document.createElement("p");
-          p.textContent = x.catagory;
+          p.textContent = x.category;
           result.appendChild(p);
         }
         const link = document.createElement("a");

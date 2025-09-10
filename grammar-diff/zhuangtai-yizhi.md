@@ -1,5 +1,6 @@
 ---
 title: 状态・意志
+category: 语法对比
 ---
 
 {% examples %}

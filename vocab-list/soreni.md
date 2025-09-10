@@ -1,6 +1,6 @@
 ---
 title: それに
-tags: ["词汇"]
+category: 词汇
 ---
 
 ## 一致

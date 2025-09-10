@@ -1,5 +1,6 @@
 ---
 title: でも
+category: 语法
 ---
 
 ## 即使
