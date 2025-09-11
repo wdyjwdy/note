@@ -2,19 +2,19 @@
     @media (prefers-color-scheme: light) {
         --body-bg: oklch(0.99 0 0);
         --body-color: oklch(0.37 0 0);
-        --verses-bg: oklch(1 0 0);
-        --verses-border: oklch(0.87 0 0);
-        --tag-bg: oklch(0.96 0 0);
-        --tag-border: oklch(0.9 0 0);
+        --pre-bg: oklch(1 0 0);
+        --pre-border: oklch(0.87 0 0);
+        --code-bg: oklch(0.96 0 0);
+        --code-border: oklch(0.9 0 0);
     }
 
     @media (prefers-color-scheme: dark) {
         --body-bg: oklch(0.26 0 0);
         --body-color: oklch(0.8 0 0);
-        --verses-bg: oklch(0.22 0 0);
-        --verses-border: oklch(0.3 0 0);
-        --tag-bg: oklch(0.3 0 0);
-        --tag-border: oklch(0.4 0 0);
+        --pre-bg: oklch(0.22 0 0);
+        --pre-border: oklch(0.3 0 0);
+        --code-bg: oklch(0.3 0 0);
+        --code-border: oklch(0.4 0 0);
     }
 }
 
@@ -85,6 +85,28 @@ pre {
     margin: 20px 0;
     padding: 6px 10px;
     border-radius: 8px;
-    border: 1px solid var(--verses-border);
-    background-color: var(--verses-bg);
+    border: 1px solid var(--pre-border);
+    background-color: var(--pre-bg);
+}
+
+code:not(pre code) {
+    padding: 1px 4px;
+    border-radius: 8px;
+    border: 1px solid var(--code-border);
+    background-color: var(--code-bg);
+}
+
+/* syntas highlight */
+.token.comment {
+    color: oklch(0.5 0 0 / 0.5);
+}
+
+.token.keyword,
+.token.property {
+    color: indianred;
+}
+
+.token.selector,
+.token.function {
+    color: steelblue;
 }

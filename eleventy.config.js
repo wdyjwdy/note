@@ -1,13 +1,13 @@
 import { HtmlBasePlugin, IdAttributePlugin } from "@11ty/eleventy";
+import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 
 export default async function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("imgs");
   eleventyConfig.addPassthroughCopy("src");
 
   eleventyConfig.addPlugin(HtmlBasePlugin);
-  eleventyConfig.addPlugin(IdAttributePlugin, {
-    slugify: getSlugify,
-  });
+  eleventyConfig.addPlugin(IdAttributePlugin, { slugify: getSlugify });
+  eleventyConfig.addPlugin(syntaxHighlight);
 
   eleventyConfig.addPairedShortcode("forms", getForms);
   eleventyConfig.addPairedShortcode("examples", getExamples);
