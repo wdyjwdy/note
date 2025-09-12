@@ -7,15 +7,15 @@ category: 语法
 
 改为「い形く」。
 
-{% examples %}
+```example
 楽しく遊びましょう。#愉快的玩耍吧。
 日本に長く住んでいる。#长期住在日本。
-{% endexamples %}
+```
 
 ## な形な
 
 改为「な形に」。
 
-{% examples %}
+```example
 意見を自由に言ってください。#请自由发表意见。
-{% endexamples %}
+```

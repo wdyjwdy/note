@@ -11,7 +11,7 @@ category: 语法
 
 教师对学生，父母对孩子，下命令。
 
-{% examples %}
+```example
 早く寝なさい。#早点睡。
 宿題を出しなさい。#交作业。
-{% endexamples %}
+```

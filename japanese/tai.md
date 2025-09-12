@@ -11,9 +11,9 @@ category: 语法
 
 表示希望。
 
-{% examples %}
+```example
 海を見たいです。#想看海。
-{% endexamples %}
+```
 
 - 同义语法[ほしい](../hosii)
 
@@ -23,6 +23,6 @@ category: 语法
 
 表示第三者的希望。
 
-{% examples %}
+```example
 彼は海を見たがります。#他想看海。
-{% endexamples %}
+```

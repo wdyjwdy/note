@@ -11,6 +11,6 @@ category: 语法
 
 必须做某事。
 
-{% examples %}
+```example
 朝ご飯を食べなければなりません。#必须吃早饭。
-{% endexamples %}
+```

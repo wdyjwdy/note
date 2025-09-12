@@ -12,10 +12,10 @@ category: 语法
 
 我给别人，别人给别人。
 
-{% examples %}
+```example
 私は彼女に花をあげました。#我给了她花。
 私は彼女に花を買ってあげました。#我给她买了花。
-{% endexamples %}
+```
 
 - 对比「[あげる・もらう・くれる](../ageru-morau-kureru)」，近义词「[もらう](../morau)・[くれる](../kureru)」。
 
@@ -26,6 +26,6 @@ category: 语法
 
 「あげる」的敬语。
 
-{% examples %}
+```example
 私は先生にお土産をさしあげました。#我给了老师礼物。
-{% endexamples %}
+```

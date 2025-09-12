@@ -11,9 +11,9 @@ category: 语法
 
 表示第三者的一般倾向。
 
-{% examples %}
+```example
 彼は運動を嫌がります。#他很讨厌运动。
-{% endexamples %}
+```
 
 ## 表示第三者的感受
 
@@ -23,6 +23,6 @@ category: 语法
 
 表示第三者的感受。
 
-{% examples %}
+```example
 彼は寂しがっています。#他感到很伤心。
-{% endexamples %}
+```

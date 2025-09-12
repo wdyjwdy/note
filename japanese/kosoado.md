@@ -18,15 +18,15 @@ category: 语法
 
 离双方都很近。
 
-{% examples %}
+```example
 これは誰のかばんですか。#这是谁的包。
-{% endexamples %}
+```
 
 离说话人很近。
 
-{% examples %}
+```example
 ここが痛い。#这里痛
-{% endexamples %}
+```
 
 ## そ
 
@@ -41,22 +41,22 @@ category: 语法
 
 离听话人更近。
 
-{% examples %}
+```example
 その指輪、きれいですね。#你的戒指真好看。
-{% endexamples %}
+```
 
 离双方都稍有距离。
 
-{% examples %}
+```example
 トイレはそこです。#厕所在那里。
-{% endexamples %}
+```
 
 只有一方知道的事情。
 
-{% examples %}
+```example
 A「さっき桜に会いました。」#刚刚和小樱见了面。
 B「その人は誰ですか？」#那人是谁？
-{% endexamples %}
+```
 
 ## あ
 
@@ -71,16 +71,16 @@ B「その人は誰ですか？」#那人是谁？
 
 离双方都很远。
 
-{% examples %}
+```example
 あの木の上に鳥がいる。#那棵树上有只鸟。
 あの人は誰ですか。#哪个人是谁。
-{% endexamples %}
+```
 
 双方都知道的事情。
 
-{% examples %}
+```example
 またあの店に行こう。#我们下次还是去那家店吧。
-{% endexamples %}
+```
 
 ## ど
 

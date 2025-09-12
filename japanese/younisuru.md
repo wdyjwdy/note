@@ -11,9 +11,9 @@ category: 语法
 
 努力做到某事。
 
-{% examples %}
+```example
 遅れないようにしてください。#请尽量别迟到。
-{% endexamples %}
+```
 
 {% forms %}
 〔辞書形・ない形〕ようにしている
@@ -21,6 +21,6 @@ category: 语法
 
 正在付出努力。
 
-{% examples %}
+```example
 自分で料理を作るようにしている。#正在努力自己做饭。
-{% endexamples %}
+```

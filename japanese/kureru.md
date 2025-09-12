@@ -12,10 +12,10 @@ category: 语法
 
 别人给我。
 
-{% examples %}
+```example
 彼は私に牛乳をくれました。#他给了我牛奶。
 彼は私に牛乳を買ってくれました。#他给我买了牛奶。
-{% endexamples %}
+```
 
 - 参考：对比「[あげる・もらう・くれる](../ageru-morau-kureru)」，近义词「[もらう](../morau)・[あげる](../ageru)」。
 
@@ -26,6 +26,6 @@ category: 语法
 
 「くれる」的敬语。
 
-{% examples %}
+```example
 先生は私にお土産をくださいました。#老师给了我礼物。
-{% endexamples %}
+```

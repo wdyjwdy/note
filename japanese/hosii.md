@@ -11,9 +11,9 @@ category: 语法
 
 表示希望。
 
-{% examples %}
+```example
 車が欲しいです。#想要一辆车。
-{% endexamples %}
+```
 
 - 同义语法「[たい](../tai)」
 
@@ -23,6 +23,6 @@ category: 语法
 
 表示第三者的希望。
 
-{% examples %}
+```example
 彼は車を欲しがります。#他想要一辆车。
-{% endexamples %}
+```

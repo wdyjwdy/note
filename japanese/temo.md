@@ -9,7 +9,7 @@ category: 语法
 〔简体て形〕も
 {% endforms %}
 
-{% examples %}
+```example
 お金がなくても、幸せです。#没有钱也很幸福。
 何回読んでも、意味がわかりません。#读了几遍，还是不懂。
-{% endexamples %}
+```

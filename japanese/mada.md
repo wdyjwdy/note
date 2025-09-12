@@ -5,7 +5,7 @@ category: 词汇
 
 ## 还没
 
-{% examples %}
+```example
 まだ食べていない。#还没吃。
 私はまだ家にいる。#我还在家。
-{% endexamples %}
+```

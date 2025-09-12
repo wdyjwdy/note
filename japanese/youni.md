@@ -11,8 +11,8 @@ category: 语法
 
 通常翻译为「为了」。
 
-{% examples %}
+```example
 風が入るように、窓を開けた。#为了让风进来，打开了窗户。
-{% endexamples %}
+```
 
 - 对比「[ために・ように](../tameni-youni)」

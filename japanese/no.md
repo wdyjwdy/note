@@ -9,9 +9,9 @@ category: 语法
 〔简体・な形な〕
 {% endforms %}
 
-{% examples %}
+```example
 探しているのは牛乳だ。#我要找的是牛奶。
 話しているのが聞こえる。#能听到有人说话。
-{% endexamples %}
+```
 
 - 对比「[の・こと](../no-koto#名词化)」

@@ -11,9 +11,9 @@ category: 语法
 
 某时刻前，一直做某事。
 
-{% examples %}
+```example
 十二時まで勉強します。#学到十二点。
-{% endexamples %}
+```
 
 ## 某时刻前的瞬间性动作
 
@@ -23,6 +23,6 @@ category: 语法
 
 某时刻前，做某事。
 
-{% examples %}
+```example
 九時までに寝ます。#九点前睡觉。
-{% endexamples %}
+```

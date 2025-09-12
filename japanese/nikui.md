@@ -9,7 +9,7 @@ category: 语法
 〔ます形〕
 {% endforms %}
 
-{% examples %}
+```example
 わかりにくいです。#很难理解。
 切れにくい糸。#很难断的线。
-{% endexamples %}
+```

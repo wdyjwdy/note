@@ -11,8 +11,8 @@ category: 词汇
 
 与前文相同的内容。
 
-{% examples %}
+```example
 バナナはおいしい。それに、安い。#香蕉好吃，而且便宜。
-{% endexamples %}
+```
 
 - 反义词「[けれど](../keredo#转折)」

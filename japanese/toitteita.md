@@ -9,7 +9,7 @@ category: 语法
 〔简体〕
 {% endforms %}
 
-{% examples %}
+```example
 彼は何と言っていましたか。#他说了什么。
 彼は最近忙しいと言っていました。#他说他最近很忙。
-{% endexamples %}
+```

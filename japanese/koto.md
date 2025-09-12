@@ -9,9 +9,9 @@ category: 语法
 〔名词〕
 {% endforms %}
 
-{% examples %}
+```example
 学校のことを知っていますか。#知道学校的事情吗？
-{% endexamples %}
+```
 
 ## 名词化
 
@@ -19,8 +19,8 @@ category: 语法
 〔简体・な形な〕
 {% endforms %}
 
-{% examples %}
+```example
 趣味は食べることです。#兴趣是吃东西。
-{% endexamples %}
+```
 
 - 对比「[の・こと](../no-koto#名词化)」

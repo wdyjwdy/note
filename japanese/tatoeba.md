@@ -6,6 +6,6 @@ keys: 例えば
 
 ## 举例
 
-{% examples %}
+```example
 例えば、バナナ。#例如香蕉。
-{% endexamples %}
+```

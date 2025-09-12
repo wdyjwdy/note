@@ -11,7 +11,7 @@ category: 语法
 
 不能～。
 
-{% examples %}
+```example
 撮ってはいけません。#不能拍照。
 着物ではいけない。#不能穿和服。
-{% endexamples %}
+```

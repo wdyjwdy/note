@@ -9,9 +9,9 @@ category: 语法
 〔被动使役形〕
 {% endforms %}
 
-{% examples %}
+```example
 私は会社を辞めさせられました。#我被辞退了。
-{% endexamples %}
+```
 
 ## 被某人引发某种情感
 
@@ -19,6 +19,6 @@ category: 语法
 〔被动使役形〕
 {% endforms %}
 
-{% examples %}
+```example
 心配させられました。#把我担心坏了。
-{% endexamples %}
+```

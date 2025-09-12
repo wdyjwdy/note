@@ -11,10 +11,10 @@ category: 语法
 
 ～也可以。
 
-{% examples %}
+```example
 狭くてもいいです。#小一点也可以。
 近なくてもいいです。#不那么近也可以。
-{% endexamples %}
+```
 
 ## 表示许可
 
@@ -24,6 +24,6 @@ category: 语法
 
 可以～吗。
 
-{% examples %}
+```example
 ここに座ってもいいですか。#可以坐这里吗？
-{% endexamples %}
+```
