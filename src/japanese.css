@@ -117,6 +117,7 @@ pre {
 
     code {
         font-family: auto;
+        white-space: pre-line;
     }
 }
 

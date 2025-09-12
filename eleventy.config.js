@@ -10,7 +10,6 @@ export default async function (eleventyConfig) {
   eleventyConfig.addPlugin(syntaxHighlight, { init: getInit });
 
   eleventyConfig.addPairedShortcode("forms", getForms);
-  eleventyConfig.addPairedShortcode("examples", getExamples);
 }
 
 export const config = {
@@ -24,18 +23,6 @@ function getForms(content) {
     .map((f) => `<span>${f}</span>`)
     .join("");
   return `<div class="forms">${forms}</div>`;
-}
-
-function getExamples(content) {
-  const examples = content
-    .split("\n")
-    .filter((e) => e)
-    .map((e) => {
-      const [a, b] = e.split("#");
-      return `<p><span>${a}</span><span>${b}</span></p>`;
-    })
-    .join("");
-  return `<div class="examples">${examples}</div>`;
 }
 
 function getSlugify(text) {
