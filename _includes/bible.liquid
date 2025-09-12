@@ -9,6 +9,9 @@
     </head>
     <body>
         <h1>{{ title }}</h1>
+        {% if toc %}
+        {{ content | toc }}
+        {% endif %}
         {{ content }}
     </body>
 </html>
