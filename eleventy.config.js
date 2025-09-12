@@ -7,7 +7,7 @@ export default async function (eleventyConfig) {
 
   eleventyConfig.addPlugin(HtmlBasePlugin);
   eleventyConfig.addPlugin(IdAttributePlugin, { slugify: getSlugify });
-  eleventyConfig.addPlugin(syntaxHighlight);
+  eleventyConfig.addPlugin(syntaxHighlight, { init: getInit });
 
   eleventyConfig.addPairedShortcode("forms", getForms);
   eleventyConfig.addPairedShortcode("examples", getExamples);
@@ -40,4 +40,18 @@ function getExamples(content) {
 
 function getSlugify(text) {
   return text;
+}
+
+function getInit({ Prism }) {
+  Prism.languages.example = {
+    comment: {
+      pattern: /#.*/,
+      greedy: true,
+      inside: {
+        sharp: {
+          pattern: /#/g,
+        },
+      },
+    },
+  };
 }

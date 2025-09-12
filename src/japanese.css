@@ -108,14 +108,23 @@ img {
     }
 }
 
-.examples {
+pre {
     margin: 20px 0;
     padding: 6px 10px;
     border-radius: 8px;
     border: 1px solid var(--examples-border);
     background-color: var(--examples-bg);
 
-    span:nth-child(2) {
-        color: var(--examples-trans);
+    code {
+        font-family: auto;
     }
+}
+
+/* syntas highlight */
+.token.comment {
+    color: oklch(0.5 0 0 / 0.5);
+}
+
+.token.sharp {
+    display: none;
 }
