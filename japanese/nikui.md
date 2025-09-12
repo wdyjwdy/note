@@ -5,9 +5,7 @@ category: 语法
 
 ## 很难
 
-{% forms %}
-〔ます形〕
-{% endforms %}
+`〔ます形〕`
 
 ```example
 わかりにくいです。#很难理解。
