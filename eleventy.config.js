@@ -7,6 +7,7 @@ export default async function (eleventyConfig) {
   eleventyConfig.addPlugin(HtmlBasePlugin);
   eleventyConfig.addPlugin(IdAttributePlugin, { slugify: getSlugify });
   eleventyConfig.addPlugin(syntaxHighlight, { init: getInit });
+  eleventyConfig.addLiquidFilter("toc", getToc);
 }
 
 export const config = {
@@ -29,4 +30,18 @@ function getInit({ Prism }) {
       },
     },
   };
+}
+
+function getToc(html) {
+  const headings = html
+    .matchAll(/<h[2-3][^>]*>(.*?)<\/h([2-3])>/g)
+    .map((x) => ({ text: x[1], level: x[2] }));
+  const items = [...headings]
+    .map(({ text, level }) => {
+      return level === "2"
+        ? `<li><a href="#${text}">${text}</a></li>`
+        : `<ul><li><a href="#${text}">${text}</a></li></ul>`;
+    })
+    .join("");
+  return `<ul class="toc">${items}</ul>`;
 }

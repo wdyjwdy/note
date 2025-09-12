@@ -3,7 +3,9 @@ title: JS
 category: 手写题
 ---
 
-## Array.prototype.map
+## Array
+
+### map
 
 ```js
 function map(callback, thisArg = undefined) {
@@ -21,7 +23,7 @@ function map(callback, thisArg = undefined) {
 }
 ```
 
-## Array.prototype.reduce
+### reduce
 
 ```js
 function reduce(callback, initialValue) {
@@ -42,7 +44,7 @@ function reduce(callback, initialValue) {
 }
 ```
 
-## Array.prototype.push
+### push
 
 ```js
 function push(...items) {
@@ -58,7 +60,7 @@ function push(...items) {
 }
 ```
 
-## Array.prototype.pop
+### pop
 
 ```js
 function pop() {
@@ -75,7 +77,7 @@ function pop() {
 }
 ```
 
-## Array.prototype.flat
+### flat
 
 ```js
 function flat(depth = 1) {
@@ -98,7 +100,9 @@ function flat(depth = 1) {
 }
 ```
 
-## Function.prototype.call
+## Function
+
+### call
 
 - 原理：将函数作为对象的属性调用，此时函数的 this 指向该对象
 
@@ -112,7 +116,7 @@ function call(thisArg = window, ...args) {
 }
 ```
 
-## Function.prototype.apply
+### apply
 
 ```js
 function apply(thisArg, args) {
@@ -120,7 +124,7 @@ function apply(thisArg, args) {
 }
 ```
 
-## Function.prototype.bind
+### bind
 
 ```js
 function bind(thisArg = window, ...args) {
@@ -161,7 +165,9 @@ function New(constructor, ...args) {
 }
 ```
 
-## Object.prototype.create
+## Object
+
+### create
 
 ```js
 function create(proto) {
@@ -171,7 +177,7 @@ function create(proto) {
 }
 ```
 
-## Object.prototype.assign
+### assign
 
 ```js
 function assign(target, ...sources) {
@@ -186,7 +192,7 @@ function assign(target, ...sources) {
 }
 ```
 
-## Object.prototype.keys
+### keys
 
 - 返回一个数组，包含[自身可枚举](./js/object.md/#object-property)属性的键
 
@@ -236,7 +242,7 @@ class MyPromise {
 }
 ```
 
-## Promise constructor
+### constructor
 
 ```js
 constructor(executor) {
@@ -270,7 +276,7 @@ constructor(executor) {
 }
 ```
 
-## Promise.prototype.then
+### then
 
 1. onFulfilled 默认为 `x => x`
 2. onRejected 默认为 `x => { throw x }`
@@ -296,7 +302,7 @@ then(onFulfilled, onRejected) {
 }
 ```
 
-## Promise.prototype.catch
+### catch
 
 1. onRejected 默认为 `x => { throw x }`
 
@@ -306,7 +312,7 @@ catch(onRejected) {
 }
 ```
 
-## Promise.prototype.finally
+### finally
 
 1. onFinally 默认为 `x => { throw x }`
 
@@ -320,7 +326,7 @@ finally(onFinally) {
 }
 ```
 
-## Promise.prototype.all
+### all
 
 ```js {6}
 function all(promises) {
@@ -346,7 +352,7 @@ function all(promises) {
 Promise.all = all;
 ```
 
-## Promise.prototype.race
+### race
 
 ```js {5}
 function race(promises) {
@@ -364,7 +370,7 @@ function race(promises) {
 Promise.race = race;
 ```
 
-## Promise.prototype.any
+### any
 
 ```js
 static any(promises) {
@@ -386,7 +392,7 @@ static any(promises) {
 }
 ```
 
-## Promise.prototype.allSettled
+### allSettled
 
 ```js
 static allSettled(promises) {
@@ -411,7 +417,7 @@ static allSettled(promises) {
 }
 ```
 
-## Promise.prototype.resolve
+### resolve
 
 ```js
 static resolve(value) {
@@ -422,7 +428,7 @@ static resolve(value) {
 }
 ```
 
-## Promise.prototype.reject
+### reject
 
 ```js
 static reject(value) {
