@@ -51,6 +51,7 @@ a {
     text-decoration-thickness: from-font;
     text-underline-offset: 6px;
     text-decoration-line: unset;
+    line-height: 1em;
 }
 
 a:hover {
