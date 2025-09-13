@@ -1,34 +1,25 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" href="/src/heart.svg" type="image/svg+xml">
-        <link rel="stylesheet" href="/src/index.css" />
-        <script src="/src/search.js" defer></script>
-        <title>note</title>
-    </head>
-    <body>
-        <h1>ノート</h1>
-        <div class="search">
-          <div>
-              <img src="/src/search.svg" alt="Search">
-          </div>
-          <input type="text" id="search">
-        </div>
-        <div class="tags"></div>
-        <div class="result"></div>
-        <script>
-          const data = [
-            {% for post in collections.all %}
-              {
-                title: "{{ post.data.title }}",
-                url: "{{ post.url }}",
-                category: "{{ post.data.category }}",
-                keys: "{{ post.data.keys }}"
-              }{% if forloop.last == false %},{% endif %}
-            {% endfor %}
-          ];
-        </script>
-    </body>
-</html>
+---
+style: index
+layout: layout.liquid
+index: true
+title: ノート
+---
+
+<div class="search">
+    <div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg></div>
+    <input type="text" id="search">
+</div>
+<div class="tags"></div>
+<div class="result"></div>
+<script>
+const data = [
+  {% for post in collections.all %}
+    {
+      title: "{{ post.data.title }}",
+      url: "{{ post.url }}",
+      category: "{{ post.data.category }}",
+      keys: "{{ post.data.keys }}"
+    }{% if forloop.last == false %},{% endif %}
+  {% endfor %}
+];
+</script>

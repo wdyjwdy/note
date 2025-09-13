@@ -2,7 +2,7 @@ const search = document.querySelector("#search");
 const tags = document.querySelector(".tags");
 const result = document.querySelector(".result");
 
-const pages = data.filter((x) => x.title);
+const pages = data.filter((x) => x.category);
 const categories = new Set(pages.map((x) => x.category));
 
 for (let category of categories) {
