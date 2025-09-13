@@ -1,3 +1,4 @@
 {
-  "layout": "bible.liquid"
+  "layout": "layout.liquid",
+  "style": "bible"
 }

@@ -1,3 +1,5 @@
 {
-  "layout": "frontend.liquid"
+  "layout": "layout.liquid",
+  "style": "frontend",
+  "toc": true
 }

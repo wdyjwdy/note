@@ -1,3 +1,4 @@
 {
-  "layout": "japanese.liquid"
+  "layout": "layout.liquid",
+  "style": "japanese"
 }
