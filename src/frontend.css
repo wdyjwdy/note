@@ -72,6 +72,12 @@ ol {
     padding-left: 20px;
 }
 
+table td {
+    padding: 10px;
+    border: 1px solid var(--pre-border);
+    border-radius: 2px;
+}
+
 strong {
     color: steelblue;
 }

@@ -2,21 +2,19 @@
     @media (prefers-color-scheme: light) {
         --body-bg: oklch(0.99 0 0);
         --body-color: oklch(0.37 0 0);
-        --examples-bg: oklch(1 0 0);
-        --examples-border: oklch(0.87 0 0);
-        --examples-trans: oklch(0.7 0 0);
-        --forms-bg: oklch(0.96 0 0);
-        --forms-border: oklch(0.9 0 0);
+        --pre-bg: oklch(1 0 0);
+        --pre-border: oklch(0.87 0 0);
+        --code-bg: oklch(0.96 0 0);
+        --code-border: oklch(0.9 0 0);
     }
 
     @media (prefers-color-scheme: dark) {
         --body-bg: oklch(0.26 0 0);
         --body-color: oklch(0.8 0 0);
-        --examples-bg: oklch(0.22 0 0);
-        --examples-border: oklch(0.3 0 0);
-        --examples-trans: oklch(0.5 0 0);
-        --forms-bg: oklch(0.3 0 0);
-        --forms-border: oklch(0.4 0 0);
+        --pre-bg: oklch(0.22 0 0);
+        --pre-border: oklch(0.3 0 0);
+        --code-bg: oklch(0.3 0 0);
+        --code-border: oklch(0.4 0 0);
     }
 }
 
@@ -75,12 +73,10 @@ ol {
     padding-left: 20px;
 }
 
-table {
-    border-spacing: 10px;
-
-    td {
-        border-top: 1px solid;
-    }
+table td {
+    padding: 10px;
+    border: 1px solid var(--pre-border);
+    border-radius: 2px;
 }
 
 strong {
@@ -99,8 +95,8 @@ img {
 code:not(pre code) {
     padding: 0 2px;
     border-radius: 8px;
-    border: 1px solid var(--forms-border);
-    background-color: var(--forms-bg);
+    border: 1px solid var(--code-border);
+    background-color: var(--code-bg);
     font-family: auto;
 }
 .forms {
@@ -110,8 +106,8 @@ code:not(pre code) {
         padding: 0 2px;
         margin-right: 4px;
         border-radius: 8px;
-        border: 1px solid var(--forms-border);
-        background-color: var(--forms-bg);
+        border: 1px solid var(--code-border);
+        background-color: var(--code-bg);
     }
 }
 
@@ -119,8 +115,8 @@ pre {
     margin: 20px 0;
     padding: 6px 10px;
     border-radius: 8px;
-    border: 1px solid var(--examples-border);
-    background-color: var(--examples-bg);
+    border: 1px solid var(--pre-border);
+    background-color: var(--pre-bg);
 
     code {
         font-family: auto;

@@ -1,6 +1,6 @@
 ---
 title: JS
-category: 手写题
+category: Handwrite
 ---
 
 ## Array
