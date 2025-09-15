@@ -4,16 +4,12 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/src/heart.svg" type="image/svg+xml">
-        <link rel="stylesheet" href="/src/main.css" />
-        <link rel="stylesheet" href="/src/{{ style }}.css" />
-        {% if index %}<script src="/src/search.js" defer></script>{% endif %}
+        <link rel="stylesheet" href="/src/style.css" />
         <title>{{ title }}</title>
     </head>
     <body>
         <h1>{{ title }}</h1>
-        {% if toc %}
-        {{ content | toc }}
-        {% endif %}
+        {% if toc %}{{ content | toc }}{% endif %}
         {{ content }}
     </body>
 </html>

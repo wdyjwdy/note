@@ -1,7 +1,5 @@
 ---
-style: index
 layout: layout.liquid
-index: true
 title: ノート
 ---
 
@@ -9,17 +7,51 @@ title: ノート
     <div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg></div>
     <input type="text" id="search">
 </div>
-<div class="tags"></div>
+<div class="tags">
+    {% for category in collections.categories %}
+    <button>{{ category }}</button>
+    {% endfor %}
+</div>
 <div class="result"></div>
 <script>
-const data = [
-  {% for post in collections.all %}
-    {
-      title: "{{ post.data.title }}",
-      url: "{{ post.url }}",
-      category: "{{ post.data.category }}",
-      keys: "{{ post.data.keys }}"
-    }{% if forloop.last == false %},{% endif %}
-  {% endfor %}
-];
+const pages = {{ collections.pages | jsonify }}
+const search = document.querySelector("#search");
+const tags = document.querySelector(".tags");
+const result = document.querySelector(".result");
+
+tags.addEventListener("click", function (event) {
+  if (event.target.tagName === "BUTTON") {
+    search.value = event.target.textContent;
+    const enterEvent = new KeyboardEvent("keydown", {
+      key: "Enter",
+      code: "Enter",
+      bubbles: true,
+    });
+    search.dispatchEvent(enterEvent);
+  }
+});
+
+search.addEventListener("keydown", function (event) {
+  if (event.code === "Enter") {
+    result.replaceChildren();
+    const query = this.value;
+    pages
+      .filter(
+        (x) =>
+          x.title.includes(query) ||
+          x.category === query ||
+          x.keys?.includes(query),
+      )
+      .forEach((x, i, a) => {
+        const prevCategory = a[i - 1]?.category;
+        if (x.category !== prevCategory) {
+          result.insertAdjacentHTML("beforeend", `<p>${x.category}</p>`);
+        }
+        result.insertAdjacentHTML(
+          "beforeend",
+          `<a href=".${x.url}">${x.title}</a>`,
+        );
+      });
+  }
+});
 </script>

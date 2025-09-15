@@ -8,6 +8,8 @@ export default async function (eleventyConfig) {
   eleventyConfig.addPlugin(IdAttributePlugin, { slugify: getSlugify });
   eleventyConfig.addPlugin(syntaxHighlight, { init: getInit });
   eleventyConfig.addLiquidFilter("toc", getToc);
+  eleventyConfig.addCollection("categories", getCategories);
+  eleventyConfig.addCollection("pages", getPages);
 }
 
 export const config = {
@@ -44,4 +46,27 @@ function getToc(html) {
     })
     .join("");
   return `<ul class="toc">${items}</ul>`;
+}
+
+function getCategories(api) {
+  const categories = api
+    .getAll()
+    .map((x) => x.data.category)
+    .filter((x) => x);
+  const set = new Set(categories);
+  return [...set];
+}
+
+function getPages(api) {
+  const categories = api
+    .getAll()
+    .map((x) => ({
+      title: x.data.title,
+      category: x.data.category,
+      keys: x.data.keys,
+      url: x.url,
+    }))
+    .filter((x) => x.category)
+    .sort((a, b) => (a.category < b.category ? 1 : -1));
+  return categories;
 }
