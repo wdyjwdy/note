@@ -38,7 +38,7 @@ search.addEventListener("keydown", function (event) {
     pages
       .filter(
         (x) =>
-          x.title.includes(query) ||
+          new RegExp(query, "i").test(x.title) ||
           x.category === query ||
           x.keys?.includes(query),
       )
