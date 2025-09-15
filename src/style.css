@@ -69,7 +69,7 @@ a {
 }
 
 ul {
-    margin: 20px 0;
+    margin: 10px 0;
     padding-left: 20px;
     list-style-type: circle;
 }
@@ -79,10 +79,15 @@ ol {
     padding-left: 20px;
 }
 
-table td {
-    padding: 10px;
-    border: 1px solid var(--pre-border);
-    border-radius: 2px;
+table {
+    th {
+        padding: 10px;
+    }
+    td {
+        padding: 10px;
+        border: 1px solid var(--pre-border);
+        border-radius: 2px;
+    }
 }
 
 em {
@@ -94,11 +99,23 @@ img {
     max-width: 100%;
 }
 
+blockquote {
+    padding: 0 8px;
+    border-radius: 8px;
+    border: 1px solid oklch(0.7 0.19 142.09 / 0.2);
+    background-color: oklch(0.7 0.17 141.98 / 0.2);
+
+    strong {
+        color: seagreen;
+    }
+}
+
 code:not(pre code) {
     padding: 0 2px;
     border-radius: 8px;
     border: 1px solid var(--code-border);
     background-color: var(--code-bg);
+    font-family: auto;
 }
 
 pre {
@@ -107,10 +124,6 @@ pre {
     border-radius: 8px;
     border: 1px solid var(--pre-border);
     background-color: var(--pre-bg);
-}
-
-code[class*="language-example"]:not(pre code) {
-    font-family: auto;
 }
 
 pre[class*="language-example"] {

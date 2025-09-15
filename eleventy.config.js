@@ -35,17 +35,25 @@ function getInit({ Prism }) {
 }
 
 function getToc(html) {
-  const headings = html
-    .matchAll(/<h[2-3][^>]*>(.*?)<\/h([2-3])>/g)
-    .map((x) => ({ text: x[1], level: x[2] }));
-  const items = [...headings]
-    .map(({ text, level }) => {
-      return level === "2"
-        ? `<li><a href="#${text}">${text}</a></li>`
-        : `<ul><li><a href="#${text}">${text}</a></li></ul>`;
-    })
-    .join("");
-  return `<ul class="toc">${items}</ul>`;
+  const regex = /<h([2-3])[^>]*>(.*?)<\/h\1>/g;
+  let result = [];
+  let tmp = [];
+  for (const [, level, text] of html.matchAll(regex)) {
+    const li = `<li><a href="#${text}">${text}</a></li>`;
+    if (level === "3") {
+      tmp.push(li);
+    } else {
+      if (tmp.length) {
+        result.push(`<ul>${tmp.join("")}</ul>`);
+        tmp = [];
+      }
+      result.push(li);
+    }
+  }
+  if (tmp.length) {
+    result.push(`<ul>${tmp.join("")}</ul>`);
+  }
+  return `<ul class="toc">${result.join("")}</ul>`;
 }
 
 function getCategories(api) {
