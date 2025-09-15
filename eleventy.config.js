@@ -1,5 +1,6 @@
 import { HtmlBasePlugin, IdAttributePlugin } from "@11ty/eleventy";
 import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
+import mermaid from "./src/plugin.js";
 
 export default async function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("imgs");
@@ -7,6 +8,7 @@ export default async function (eleventyConfig) {
   eleventyConfig.addPlugin(HtmlBasePlugin);
   eleventyConfig.addPlugin(IdAttributePlugin, { slugify: getSlugify });
   eleventyConfig.addPlugin(syntaxHighlight, { init: getInit });
+  eleventyConfig.addPlugin(mermaid);
   eleventyConfig.addLiquidFilter("toc", getToc);
   eleventyConfig.addCollection("categories", getCategories);
   eleventyConfig.addCollection("pages", getPages);

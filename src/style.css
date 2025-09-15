@@ -126,11 +126,16 @@ pre {
     background-color: var(--pre-bg);
 }
 
-pre[class*="language-example"] {
+pre[class="language-example"] {
     code {
         font-family: auto;
         white-space: pre-line;
     }
+}
+
+pre:has(> code[class*="language-mermaid"]) {
+    background-color: unset;
+    border: unset;
 }
 
 pre[class*="language-"] {
