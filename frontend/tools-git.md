@@ -100,7 +100,7 @@ ce01362 hello.txt
 
 1. 假设 Index 内容如下，并执行 `git commit -m 'update'`。
 
-```
+```sh
 4c479de fruits/apple.txt
 637a09b fruits/banana.txt
 ce01362 hello.txt
@@ -155,3 +155,167 @@ $ cat .git/refs/heads/main # value
 > 2. `HEAD^2`: HEAD 的第二个父节点
 > 3. `HEAD~`: HEAD 的父节点
 > 4. `HEAD~2`: HEAD 父节点的父节点
+
+### 查看最新提交
+
+1. 分支指针指向最新提交。
+
+```sh
+$ cat .git/refs/heads/main # value
+846aac5
+```
+
+## Branch
+
+### 新建分支
+
+1. 假设有以下提交历史，并执行 `git branch feat`。
+
+```sh
+846aac5 (HEAD -> main) commit 3
+d58f2f5 commit 2
+43bed3d commit 1
+```
+
+2. Git 会在 refs/heads 目录下创建一个名为 feat 的文件，内容为当前 commit。
+
+```diff
++ .git/refs/heads/feat
+```
+
+```sh
+$ cat refs/heads/feat # value
+846aac5
+```
+
+3. 操作完成后，历史记录如下。
+
+```sh
+846aac5 (HEAD -> main, feat) commit 3
+d58f2f5 commit 2
+43bed3d commit 1
+```
+
+### 删除分支
+
+1. 假设有以下提交历史，并执行 `git branch -d feat`。
+
+```
+846aac5 (HEAD -> main, feat) commit 3
+d58f2f5 commit 2
+43bed3d commit 1
+```
+
+2. Git 会删除 refs/heads 目录下的 feat 文件
+
+```diff
+- .git/refs/heads/feat
+```
+
+3. 操作完成后，历史记录如下。
+
+```
+846aac5 (HEAD -> main) commit 3
+d58f2f5 commit 2
+43bed3d commit 1
+```
+
+> 删除分支后，分支上的 commit 对象并不会被删除，这些对象会变成垃圾对象。
+
+### 查看当前分支
+
+1. HEAD 文件指向当前分支。
+
+```sh
+$ cat .git/HEAD # value
+ref: refs/heads/main
+```
+
+## Switch
+
+1. `git switch feat`: 切换到 feat 分支
+2. `git switch -c feat`: 创建并切换到 feat 分支
+3. `git switch --detach 6cc8ff6`: 切换到 6cc8ff6 提交
+
+### 切换到分支
+
+![switch](/imgs/tools-git-switch.svg)
+
+1. 假设有以下提交历史，并执行 `git switch feat`。
+
+```sh
+846aac5 (HEAD -> main, feat) commit 3
+d58f2f5 commit 2
+43bed3d commit 1
+```
+
+2. Git 会更新 HEAD 文件，将其指向 feat 分支。
+
+```diff
+- .git/HEAD
++ .git/HEAD
+```
+
+```sh
+$ cat .git/HEAD # value
+ref: refs/heads/feat
+```
+
+3. 更新 Index，内容为 feat 的文件列表（把 tree 展平得到的列表）。
+
+```diff
+- .git/index
++ .git/index
+```
+
+4. 更新 Working Tree，和 Index 保持一致。
+5. 操作完成后，历史记录如下。
+
+```sh
+846aac5 (HEAD -> feat, main) commit 3
+d58f2f5 commit 2
+43bed3d commit 1
+```
+
+### 切换到提交
+
+![switch-detach](/imgs/tools-git-switch-detach.svg)
+
+1. 假设有以下提交历史，并执行 `git switch --detach d58f2f5`。
+
+```sh
+846aac5 (HEAD -> main) commit 3
+d58f2f5 commit 2
+43bed3d commit 1
+```
+
+2. Git 会更新 HEAD 文件，将其指向 d58f2f5。
+
+```diff
+- .git/HEAD
++ .git/HEAD
+```
+
+```sh
+$ cat .git/HEAD # value
+d58f2f5
+```
+
+3. 更新 Index，内容为 d58f2f5 的文件列表（把 tree 展平得到的列表）。
+
+```diff
+- .git/index
++ .git/index
+```
+
+4. 更新 Working Tree，和 Index 保持一致。
+5. 操作完成后，历史记录如下。
+
+```sh
+846aac5 (main) commit 3
+d58f2f5 (HEAD) commit 2
+43bed3d commit 1
+```
+
+> - 如果想基于该提交工作，可以执行 `git switch -c <name>` 创建一个新分支。
+> - 如果想返回之前的分支，可以执行 `git switch -`。

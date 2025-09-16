@@ -125,7 +125,7 @@ blockquote {
 }
 
 code:not(pre code) {
-    padding: 0 2px;
+    padding: 0 6px;
     border-radius: 8px;
     border: 1px solid var(--code-border);
     background-color: var(--code-bg);
