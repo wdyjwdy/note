@@ -109,8 +109,7 @@ em {
 }
 
 img {
-    max-width: 800px;
-    width: 100%;
+    max-width: min(100%, 800px);
 }
 
 blockquote {
@@ -167,6 +166,7 @@ pre[class*="language-"] {
     display: none;
 }
 
+.token.deleted-sign.deleted,
 .token.attr-name,
 .token.keyword,
 .token.property {
@@ -177,6 +177,10 @@ pre[class*="language-"] {
 .token.selector,
 .token.function {
     color: steelblue;
+}
+
+.token.inserted-sign.inserted {
+    color: seagreen;
 }
 
 /* index page */
