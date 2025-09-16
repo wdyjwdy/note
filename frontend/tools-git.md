@@ -87,3 +87,71 @@ ce01362 hello.txt
 >   ce01362 hello.txt
 >   4c479de fruits/apple.txt
 >   ```
+
+## Commit
+
+- `git commit`: 提交 Index 中的内容到 Repository，并使用 Vim 输入 Commit Message。
+- `git commit -m 'update'`: 提交 Index 中的内容到 Repository，并使用 update 作为 Commit Message。
+- `git commit --amend`: 等价于 `git reset --soft HEAD~1` 加 `git commit`。
+
+### 提交文件
+
+![commit](/imgs/tools-git-commit.svg)
+
+1. 假设 Index 内容如下，并执行 `git commit -m 'update'`。
+
+```
+4c479de fruits/apple.txt
+637a09b fruits/banana.txt
+ce01362 hello.txt
+```
+
+2. Git 会在 objects 目录下生成若干 tree 对象，以树的形式记录 Index 中的文件列表
+
+```diff
+.git/objects
++ ├── 3ea2839
++ └── b0665b8
+```
+
+```sh
+# tree 3ea2839
+tree b0665b8 fruits
+blob ce01362 hello.txt
+
+# tree b0665b8
+blob 4c479de apple.txt
+blob 637a09b banana.txt
+```
+
+3. 在 objects 目录下生成一个 commit 对象，记录了 tree 的根节点，和一些提交信息
+
+```diff
++ .git/objects/705d22a
+```
+
+```sh
+# commit 705d22a
+tree 3ea2839
+author wdyjwdy <email.com>
+committer wdyjwdy <email.com>
+
+update
+```
+
+4. 更新当前分支指针，指向生成的 commit 对象
+
+```diff
+- .git/refs/heads/main
++ .git/refs/heads/main
+```
+
+```sh
+$ cat .git/refs/heads/main # value
+705d22a
+```
+
+> 1. `HEAD^`: HEAD 的父节点
+> 2. `HEAD^2`: HEAD 的第二个父节点
+> 3. `HEAD~`: HEAD 的父节点
+> 4. `HEAD~2`: HEAD 父节点的父节点
