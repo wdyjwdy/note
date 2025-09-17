@@ -39,18 +39,22 @@ body {
     padding: 20px;
 }
 
-h1,
-h2,
-h3 {
-    margin: 20px 0;
-}
-
 h1 {
+    margin: 20px 0;
     text-align: center;
 }
 
-h2:target {
-    color: steelblue;
+h2 {
+    margin: 20px 0;
+
+    &:target {
+        color: steelblue;
+    }
+}
+
+h3 {
+    margin: 20px 0;
+    color: mediumslateblue;
 }
 
 p {
