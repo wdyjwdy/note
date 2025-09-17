@@ -120,11 +120,17 @@ blockquote {
     margin: 20px 0;
     padding: 0 8px;
     border-radius: 8px;
-    border: 1px solid oklch(0.7 0.19 142.09 / 0.2);
-    background-color: oklch(0.7 0.17 141.98 / 0.2);
+    border: 1px solid oklch(0.52 0.18 142.49 / 0.3);
+    background-color: oklch(0.52 0.18 142.49 / 0.1);
 
     strong {
         color: seagreen;
+    }
+
+    code:not(pre code),
+    pre {
+        background-color: oklch(0.8 0 0 / 0.1);
+        border-color: oklch(0.8 0 0 / 0.2);
     }
 }
 
