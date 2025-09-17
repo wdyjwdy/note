@@ -895,3 +895,250 @@ A <- B <- C <- D <- D' <- C'
 ```
 
 > `git revert` 会先抵消最新的提交 D，再抵消提交 C
+
+## Reset
+
+- `git reset --soft A`: 重置 HEAD 指针到 A。
+- `git reset --mixed A`: 重置 HEAD 指针到 A，并更新 Index。
+- `git reset --hard A`: 重置 HEAD 指针到 A，并更新 Index 和 Working Tree。
+
+### 重置指针
+
+![reset-soft](/imgs/tools-git-reset-soft.svg)
+
+1. 提交历史如下，执行 `git reset --soft 04022cf` 后，Git 内部会进行后续操作。
+
+```sh
+947a868 (HEAD -> main) commit 3
+04022cf commit 2
+8de34b2 commit 1
+```
+
+2. 更新 main 指针，指向 commit 2。
+
+```diff
+- .git/refs/heads/main
++ .git/refs/heads/main
+```
+
+```sh
+$ cat .git/refs/heads/main # value
+04022cf
+```
+
+3. 操作完成后，历史记录如下。
+
+```sh
+04022cf (HEAD -> feat) commit 2
+8de34b2 commit 1
+```
+
+> 由于 `reset --soft` 仅仅移动了指针，因此还原 Reset 之前的状态很容易，只需要把指针移动回去：`git reset --soft 947a868`。
+
+### 重置指针，暂存区
+
+![reset-mixed](/imgs/tools-git-reset-mixed.svg)
+
+1. 提交历史如下，执行 `git reset --mixed 04022cf` 后，Git 内部会进行后续操作。
+
+```sh
+947a868 (HEAD -> main) commit 3
+04022cf commit 2
+8de34b2 commit 1
+```
+
+2. 更新 main 指针，指向 commit 2。
+
+```diff
+- .git/refs/heads/main
++ .git/refs/heads/main
+```
+
+```sh
+$ cat .git/refs/heads/main # value
+04022cf
+```
+
+3. 更新 Index，内容为 commit 2 的文件列表（把 tree 展平得到的列表）。
+
+```diff
+- .git/index
++ .git/index
+```
+
+4. 操作完成后，历史记录如下。
+
+```sh
+04022cf (HEAD -> feat) commit 2
+8de34b2 commit 1
+```
+
+> 由于 `reset --mixed` 仅仅移动了指针，并修改了 Index，因此还原 Reset 之前的状态很容易，只需要把指针移动回去，并把 Index 改回去：`git reset --mixed 947a868`。
+
+### 重置指针，暂存区，工作区
+
+![reset-hard](/imgs/tools-git-reset-hard.svg)
+
+1. 提交历史如下，执行 `git reset --hard 04022cf` 后，Git 内部会进行后续操作。
+
+```sh
+947a868 (HEAD -> main) commit 3
+04022cf commit 2
+8de34b2 commit 1
+```
+
+2. 更新 main 指针，指向 commit 2。
+
+```diff
+- .git/refs/heads/main
++ .git/refs/heads/main
+```
+
+```sh
+$ cat .git/refs/heads/main # value
+04022cf
+```
+
+2. 更新 Index，内容为 commit 2 的文件列表（把 tree 展平得到的列表）。
+
+```diff
+- .git/index
++ .git/index
+```
+
+4. 更新 Working Tree，内容与 Index 相同。
+5. 操作完成后，历史记录如下。
+
+```sh
+04022cf (HEAD -> feat) commit 2
+8de34b2 commit 1
+```
+
+> 由于 `reset --hard` 不仅修改了指针和 Index，还修改了 Working Tree，因此还原 Reset 之前的状态比较困难，使用 `git reset --hard 947a868` 仅会还原指针和 Index。如果 Working Tree 的修改已经暂存，那么暂存的文件可以去垃圾对象里翻找，如果 Working Tree 的修改没有暂存，那么 Git 将会丢失这部分内容，但 IDE 的缓存文件里有可能可以找到。
+
+## Stash
+
+- `git stash`: 暂存 Working Tree 和 Index
+- `git stash pop`: 取出暂存并恢复 Working Tree 和 Index
+- `git stash drop stash@{0}`: 丢弃暂存
+- `git stash list`: 查看暂存列表
+
+### 暂存工作
+
+1. 文件状态如下，执行 `ggit stash` 后，Git 内部会进行后续操作。
+
+```
+apple.txt (v3) # Working Tree
+apple.txt (v2) # Index
+apple.txt (v1) # Repository
+```
+
+2. 将 Working Tree 和 Index 的文件保存为 blob 对象，并记录在 commit 中。
+
+```diff
+.git/objects
+# blob, tree, commit (apple.txt v3, Working Tree)
++ ├── c68a266
++ ├── 246b33c
++ ├── d82a947
+# blob, tree, commit (apple.txt v2, Index)
++ ├── 280a3c0
++ ├── 7cf7b97
++ └── 4f98016
+```
+
+3. 添加 refs/stash 文件，指向记录 Working Tree 的 commit 对象。
+
+```diff
++ .git/refs/stash
+```
+
+```sh
+$ cat .git/refs/stash # value
+d82a947
+```
+
+4. 用 HEAD 更新 Working Tree 和 Index。
+
+```diff
+# Working Tree
+- apple.txt (v3)
++ apple.txt (v1)
+# Index
+- apple.txt (v2)
++ apple.txt (v1)
+```
+
+### 恢复工作
+
+1. 文件状态如下，执行 `ggit stash pop` 后，Git 内部会进行后续操作。
+
+```
+apple.txt (v1) # Working Tree
+apple.txt (v1) # Index
+apple.txt (v1) # Repository
+```
+
+2. 用 stash commit 更新 Working Tree。
+
+```diff
+# Working Tree
+- apple.txt (v1)
++ apple.txt (v3)
+```
+
+3. 删除暂存的工作。
+
+> 注意 pop 操作不会更新 Index
+
+## Restore
+
+- `git restore apple.txt`: 丢弃对 apple.txt 的修改（Edit 的逆操作）
+- `git restore --staged apple.txt`: 取消对 apple.txt 的添加（[Add](#add) 的逆操作）
+
+### 丢弃修改
+
+1. 文件状态如下，执行 `git restore apple.txt` 后，Git 内部会进行后续操作。
+
+```
+apple.txt (v3) # Working Tree
+apple.txt (v2) # Index
+apple.txt (v1) # Repository
+```
+
+2. 用 Index 的内容还原 Working Tree。
+
+```diff
+# Working Tree
+- apple.txt (v3)
++ apple.txt (v2)
+```
+
+### 取消添加
+
+1. 文件状态如下，执行 `git restore apple.txt` 后，Git 内部会进行后续操作。
+
+```
+apple.txt (v3) # Working Tree
+apple.txt (v2) # Index
+apple.txt (v1) # Repository
+```
+
+2. 用 Commit (HEAD) 的内容还原 Index。
+
+```diff
+# Index
+- apple.txt (v2)
++ apple.txt (v1)
+```
+
+## Log
+
+- `git log`: 打印提交记录
+- `git log --oneline`: 单行显示
+- `git log --graph`: 图形显示
+- `git log hello.txt`: 打印指定文件的提交记录
+
+## Reflog
+
+- `git reflog`: 打印操作记录
