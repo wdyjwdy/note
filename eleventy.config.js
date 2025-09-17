@@ -19,7 +19,7 @@ export const config = {
 };
 
 function getSlugify(text) {
-  return text;
+  return text.toLowerCase();
 }
 
 function getInit({ Prism }) {

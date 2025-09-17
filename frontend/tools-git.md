@@ -9,7 +9,7 @@ category: Tools
 
 ### 新建本地仓库
 
-1. 新建文件夹，并执行 `git init`。
+1. 文件夹如下，执行 `git init` 后，Git 内部会进行后续操作。
 
 ```
 fruits
@@ -17,7 +17,7 @@ fruits
 └── banana.txt
 ```
 
-2. Git 会创建一个 .git 文件夹。
+2. 创建一个 .git 文件夹。
 
 ```diff
 fruits
@@ -35,8 +35,6 @@ git push -u origin main
 
 ## Add
 
-Git Add 会将 Working Tree 的文件添加到 Index，例如：
-
 - `git add hello.txt`: 添加 hello.txt
 - `git add fruits`: 添加 fruits 目录下所有文件
 - `git add .`: 添加所有文件
@@ -46,13 +44,13 @@ Git Add 会将 Working Tree 的文件添加到 Index，例如：
 
 ![add](/imgs/tools-git-add.svg)
 
-1. 新建文件，并执行 `git add hello.txt`。
+1. 文件如下，执行 `git add hello.txt` 后，Git 内部会进行后续操作。
 
 ```
 hello // hello.txt
 ```
 
-2. Git 会在 objects 目录下生成一个 blob 对象，其内容为 hello，文件名为 Hash(hello)。
+2. 在 objects 目录下生成一个 blob 对象，其内容为 hello，文件名为 Hash(hello)。
 
 ```diff
 + .git/objects/ce01362
@@ -98,7 +96,7 @@ ce01362 hello.txt
 
 ![commit](/imgs/tools-git-commit.svg)
 
-1. 假设 Index 内容如下，并执行 `git commit -m 'update'`。
+1. Index 如下，执行 `git commit -m 'update'` 后，Git 内部会进行后续操作。
 
 ```sh
 4c479de fruits/apple.txt
@@ -106,7 +104,7 @@ ce01362 hello.txt
 ce01362 hello.txt
 ```
 
-2. Git 会在 objects 目录下生成若干 tree 对象，以树的形式记录 Index 中的文件列表
+2. 在 objects 目录下生成若干 tree 对象，以树的形式记录 Index 中的文件列表
 
 ```diff
 .git/objects
@@ -169,7 +167,7 @@ $ cat .git/refs/heads/main # value
 
 ### 新建分支
 
-1. 假设有以下提交历史，并执行 `git branch feat`。
+1. 提交历史如下，执行 `git branch feat` 后，Git 内部会进行后续操作。
 
 ```sh
 846aac5 (HEAD -> main) commit 3
@@ -177,7 +175,7 @@ d58f2f5 commit 2
 43bed3d commit 1
 ```
 
-2. Git 会在 refs/heads 目录下创建一个名为 feat 的文件，内容为当前 commit。
+2. 在 refs/heads 目录下创建一个名为 feat 的文件，内容为当前 commit。
 
 ```diff
 + .git/refs/heads/feat
@@ -198,7 +196,7 @@ d58f2f5 commit 2
 
 ### 删除分支
 
-1. 假设有以下提交历史，并执行 `git branch -d feat`。
+1. 提交历史如下，执行 `git branch -d feat` 后，Git 内部会进行后续操作。
 
 ```
 846aac5 (HEAD -> main, feat) commit 3
@@ -206,7 +204,7 @@ d58f2f5 commit 2
 43bed3d commit 1
 ```
 
-2. Git 会删除 refs/heads 目录下的 feat 文件
+2. 删除 refs/heads 目录下的 feat 文件
 
 ```diff
 - .git/refs/heads/feat
@@ -233,15 +231,15 @@ ref: refs/heads/main
 
 ## Switch
 
-1. `git switch feat`: 切换到 feat 分支
-2. `git switch -c feat`: 创建并切换到 feat 分支
-3. `git switch --detach 6cc8ff6`: 切换到 6cc8ff6 提交
+- `git switch feat`: 切换到 feat 分支
+- `git switch -c feat`: 创建并切换到 feat 分支
+- `git switch --detach 6cc8ff6`: 切换到 6cc8ff6 提交
 
 ### 切换到分支
 
 ![switch](/imgs/tools-git-switch.svg)
 
-1. 假设有以下提交历史，并执行 `git switch feat`。
+1. 提交历史如下，执行 `git switch feat` 后，Git 内部会进行后续操作。
 
 ```sh
 846aac5 (HEAD -> main, feat) commit 3
@@ -249,7 +247,7 @@ d58f2f5 commit 2
 43bed3d commit 1
 ```
 
-2. Git 会更新 HEAD 文件，将其指向 feat 分支。
+2. 更新 HEAD 文件，将其指向 feat 分支。
 
 ```diff
 - .git/HEAD
@@ -281,7 +279,7 @@ d58f2f5 commit 2
 
 ![switch-detach](/imgs/tools-git-switch-detach.svg)
 
-1. 假设有以下提交历史，并执行 `git switch --detach d58f2f5`。
+1. 提交历史如下，执行 `git switch --detach d58f2f5` 后，Git 内部会进行后续操作。
 
 ```sh
 846aac5 (HEAD -> main) commit 3
@@ -289,7 +287,7 @@ d58f2f5 commit 2
 43bed3d commit 1
 ```
 
-2. Git 会更新 HEAD 文件，将其指向 d58f2f5。
+2. 更新 HEAD 文件，将其指向 d58f2f5。
 
 ```diff
 - .git/HEAD
@@ -326,7 +324,7 @@ d58f2f5 (HEAD) commit 2
 
 ![merge-ff](/imgs/tools-git-merge-ff.svg)
 
-1. 假设有以下提交历史，feat 为 main 的直接后继节点，并执行 `git merge feat`。
+1. 提交历史如下，执行 `git merge feat` 后，Git 内部会进行后续操作。
 
 ```sh
 * b0cd9f5 (feat) commit 3
@@ -334,7 +332,7 @@ d58f2f5 (HEAD) commit 2
 * 1b157d3 commit 1
 ```
 
-2. Git 会更新 ORIG_HEAD 指针，指向 main 分支的最新提交，即 commit 2。
+2. 更新 ORIG_HEAD 指针，指向 main 分支的最新提交，即 commit 2。
 
 ```diff
 - .git/ORIG_HEAD
@@ -370,7 +368,7 @@ b0cd9f5
 
 ![merge](/imgs/tools-git-merge.svg)
 
-1. 假设有以下提交历史，feat 不是 main 的直接后继节点，并执行 `git merge feat`。
+1. 提交历史如下，执行 `git merge feat` 后，Git 内部会进行后续操作。
 
 ```sh
 * a9532ef (HEAD -> main) commit 3
@@ -435,7 +433,7 @@ cbd588d
 
 ### 带冲突的三路合并
 
-1. 假设有以下提交历史，feat 和 main 在同一行上都有修改，并执行 `git merge feat`。
+1. 提交历史如下，feat 和 main 在同一行上都有修改，执行 `git merge feat` 后，Git 内部会进行后续操作。
 
 ```sh
 * fb1c925 (feat) commit 3
@@ -444,7 +442,7 @@ cbd588d
 * ccf620f commit 1
 ```
 
-2. Git 会更新 ORIG_HEAD 指针
+2. 更新 ORIG_HEAD 指针
 3. 新增或修改一些文件，用于解决冲突。
 
 ```diff
@@ -503,7 +501,7 @@ Merge 操作时会更新 ORIG_HEAD，指向 Merge 前的 commit 对象，
 
 ### 应用分支
 
-1. 假设有以下提交历史，并在 feat 分支执行 `git merge feat`。
+1. 提交历史如下，在 main 分支执行 `git merge feat` 后，Git 内部会进行后续操作。
 
 ```sh
 * fda4ab8 (feat) commit 3
@@ -512,7 +510,7 @@ Merge 操作时会更新 ORIG_HEAD，指向 Merge 前的 commit 对象，
 * 2239c5b commit 1
 ```
 
-2. Git 会将 feat 分支中 root 节点之后的 commit（即 commit 3），重新提交到 main 分支上。
+2. 将 feat 分支中 root 节点之后的 commit（即 commit 3），重新提交到 main 分支上。
 
 ```diff
 .git/objects
@@ -552,7 +550,7 @@ $ cat .git/refs/heads/feat # value
 
 ### 应用单个提交
 
-1. 假设有以下提交历史，并在 feat 分支执行 `git cherry-pick D`。
+1. 提交历史如下，在 feat 分支执行 `git cherry-pick D`。
 
 ```
 A <- B <- C <- D (main)
@@ -571,7 +569,7 @@ A <- B <- C <- D (main)
 
 ### 应用多个提交
 
-1. 假设有以下提交历史，并在 feat 分支执行 `git cherry-pick C..E`。
+1. 提交历史如下，在 feat 分支执行 `git cherry-pick C..E`。
 
 ```
 A <- B <- C <- D <- E (main)
@@ -592,7 +590,7 @@ A <- B <- C <- D <- E (main)
 
 ### 创建简单标签
 
-1. 假设有以下提交历史，并执行 `git tag v1`。
+1. 提交历史如下，执行 `git tag v1` 后，Git 内部会进行后续操作。
 
 ```sh
 a0f247e (HEAD -> main) commit 3
@@ -600,7 +598,7 @@ a0f247e (HEAD -> main) commit 3
 e7f88c9 commit 1
 ```
 
-2. Git 会在 refs/tags 目录下创建一个名为 v1 的文件，内容为当前 commit。
+2. 在 refs/tags 目录下创建一个名为 v1 的文件，内容为当前 commit。
 
 ```diff
 + .git/refs/tags/v1
@@ -621,7 +619,7 @@ e7f88c9 commit 1
 
 ### 创建内容标签
 
-1. 假设有以下提交历史，并执行 `git tag -a v1 -m 'version 1`。
+1. 提交历史如下，执行 `git tag -a v1 -m 'version 1` 后，Git 内部会进行后续操作。
 
 ```sh
 a0f247e (HEAD -> main) commit 3
@@ -666,3 +664,234 @@ a0f247e (HEAD -> main, tag: v1) commit 3
 57ca93f commit 2
 e7f88c9 commit 1
 ```
+
+## Clone
+
+### 克隆远程仓库
+
+![clone](/imgs/tools-git-clone.svg)
+
+1. 提交历史如下，执行 `git clone <url>` 后，Git 内部会进行后续操作。
+
+```sh
+# remote log
+98890cc (HEAD -> main) commit 3
+5650cb4 commit 2
+8c7a5ee commit 1
+```
+
+2. 下载 .git 文件，并重建工作区。
+
+```diff
++ hello.txt # Working Tree
++ .git # Repository
+```
+
+3. 操作完成后，历史记录如下。
+
+```sh
+# local log
+98890cc (HEAD -> main, origin/main, origin/HEAD) commit 3
+5650cb4 commit 2
+8c7a5ee commit 1
+```
+
+### clone 与 init 的区别
+
+`git clone` 与 `git init` 有以下区别。
+
+1. config 文件增加了远程分支的信息。
+
+```diff
++ [remote "origin"]
++    url = https://github.com/wdyjwdy/learn-git.git
++    fetch = +refs/heads/*:refs/remotes/origin/*
++ [branch "main"]
++    remote = origin
++    merge = refs/heads/main
+```
+
+2. objects 目录下的对象会被打包。
+
+```diff
++ packed-refs
+  objects
+  └── pack
++     ├── pack-ebd0add.idx
++     └── pack-ebd0add.pack
+```
+
+3. refs 目录下增加了远程分支的引用。
+
+```diff
++ refs/remotes/origin/HEAD
+```
+
+## Fetch
+
+### 同步远程仓库
+
+![fetch](/imgs/tools-git-fetch.svg)
+
+1. 提交历史如下，执行 `git fetch` 后，Git 内部会进行后续操作。
+
+```sh
+# remote
+98890cc (HEAD -> main) commit 3
+5650cb4 commit 2
+8c7a5ee commit 1
+
+# local
+5650cb4 (HEAD -> main) commit 2
+8c7a5ee commit 1
+```
+
+2. 在 objects 目录下生成远程新提交的相关对象（即 commit 3）。
+
+```diff
+objects
++ ├── 38ea824 # blob
++ ├── 1318e47 # tree
++ └── 98890cc # commit
+```
+
+3. 更新 origin/main 分支指针，指向远程最新提交（即 commit 3）。
+
+```diff
+- .git/refs/remotes/origin/main
++ .git/refs/remotes/origin/main
+```
+
+```sh
+$ cat .git/refs/remotes/origin/main # value
+98890cc
+```
+
+4. 更新 FETCH_HEAD，记录了本次 fetch 时，远程仓库的 commit, branch, url。
+
+```diff
+- FETCH_HEAD
++ FETCH_HEAD
+```
+
+```sh
+$ cat .git/FETCH_HEAD # value
+98890cc branch 'main' of <url>
+```
+
+5. 操作完成后，历史记录如下。
+
+```sh
+# local
+98890cc (origin/main, origin/HEAD) commit 3
+5650cb4 (HEAD -> main) commit 2
+8c7a5ee commit 1
+```
+
+### FETCH_HEAD
+
+Fetch 操作时会更新 FETCH_HEAD，指向了所 Fetch 的远程分支，
+在指向 Pull 操作时，用来确定所 Merge 的目标。
+
+## Pull
+
+### 拉取远程仓库
+
+1. 提交历史如下，执行 `git pull` 后，Git 内部会进行后续操作。
+
+```sh
+# remote
+98890cc (HEAD -> main) commit 3
+5650cb4 commit 2
+8c7a5ee commit 1
+
+# local
+5650cb4 (HEAD -> main, origin/main, origin/HEAD) commit 2
+8c7a5ee commit 1
+```
+
+2. 执行 `git fetch`（见 [fetch](#fetch) 部分）
+3. 执行 `git merge origin/main`（见 [merge](#merge) 部分）
+4. 操作完成后，历史记录如下。
+
+```sh
+# local
+98890cc (HEAD -> main, origin/main, origin/HEAD) commit 3
+5650cb4 commit 2
+8c7a5ee commit 1
+```
+
+## Push
+
+- `git push origin feat`: 将 feat 分支上的修改推送到远程 origin feat 分支
+- `git push -u origin feat`: 将 feat 分支上的修改推送到远程 origin feat 分支，并将 feat 和 origin feat 进行关联
+- `git push`: 将当前分支的修改推送到远程同名分支（需要分支已关联）
+- `git push -d origin feat`: 删除远程 origin feat 分支
+
+### 推送本地修改
+
+1. 提交历史如下，执行 `git push` 后，Git 内部会进行后续操作。
+
+```sh
+# loacl log
+5637202 (HEAD -> feat) commit 3
+5650cb4 (origin/feat) commit 2
+8c7a5ee commit 1
+```
+
+2. 将修改文件的对象推送到远程的 objects 文件。
+3. 更新远程 refs/heads/feat 分支指针，指向最新 commit。
+4. 操作完成后，历史记录如下。
+
+```sh
+# loacl log
+5637202 (HEAD -> hello, origin/hello) commit 3
+5650cb4 commit 2
+8c7a5ee commit 1
+```
+
+> 使用 `git push` 上传的文件的内容有大小限制，默认为 1MB，如果超过了 1MB 则需要使用 `git config http.postBuffer` 配置缓冲区大小。
+
+### 删除远程分支
+
+1. 在本地执行 `git push -d origin feat` 后，Git 内部会进行后续操作。
+2. 删除远程 .git/refs/heads/feat 文件
+3. 删除本地 .git/refs/remotes/origin/feat 文件
+
+## Revert
+
+- `git revert A`: 抵消 commit A
+- `git revert A B`: 抵消 commit A B
+- `git revert A..C`: 抵消 commit B C
+
+### 抵消单个提交
+
+1. 提交历史如下，执行 `git revert B` 后，Git 内部会进行后续操作。
+
+```
+A <- B <- C
+```
+
+2. 创建一个 commit B'，其内容与 commit B 相反。
+3. 操作完成后，历史记录如下。
+
+```
+A <- B <- C <- B'
+```
+
+### 抵消多个提交
+
+1. 提交历史如下，执行 `git revert B..D` 后，Git 内部会进行后续操作。
+
+```
+A <- B <- C <- D
+```
+
+2. 创建 commit D', C'，其内容分别与 commit D, C 相反。
+3. 操作完成后，历史记录如下。
+
+```
+A <- B <- C <- D <- D' <- C'
+```
+
+> `git revert` 会先抵消最新的提交 D，再抵消提交 C
