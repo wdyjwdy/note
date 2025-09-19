@@ -5,94 +5,54 @@ category: Library
 
 ## Types
 
-### Basic Types
-
-1. Primitive
-
 ```ts
-type A = number;
-type B = string;
-type C = boolean;
-type D = undefined;
-type E = null;
-```
+// Primitives
+type Number = number;
+type String = string;
+type Boolean = boolean;
+type Undefined = undefined;
+type Null = null;
 
-2. Array
+// Arrays
+type NumberArray = number[];
 
-```ts
-// single-type
-type A = number[];
-type B = Array<number>;
-
-// multi-types
-type C = (number | string)[];
-type D = Array<number | string>;
-```
-
-3. Object
-
-```ts
-type A = {
-  x: number;
-  y?: number; // Optional Property
-};
-```
-
-4. Function
-
-```ts
-type A = () => void;
-type B = (x: number) => number;
-type C = (x?: number) => number; // Optional Parameter
-type D = (x: number, ...rest: number[]) => void; // Rest Parameters
-```
-
-5. never
-
-```ts
-// empty set
-function fn(x: number) {
-  if (typeof x === "number") {
-  } else {
-  } // x: never
+// Functions
+function fn(a: number, b: number): number {
+  return a + b;
 }
 
-// function never return
-function fn(): never {
-  // fn: () => never
-  throw new Error();
-}
-```
+// Objects
+type Point = { x: number; y: number };
+type Point = { x: number; y?: number }; // optional property
 
-6. Any & Unkonwn
+// Union Type
+type StringOrNumber = string | number;
+type BooleanOrNumber = boolean | number;
 
-```ts
+// Intersection Type
+type Number = StringOrNumber & BooleanOrNumber;
+
+// Literal Types
+type Direction = "top" | "right" | "bottom" | "left";
+
+// Any
 function fn(x: any) {
   x(); // ✅
   x.a(); // ✅
 }
 
+// Unknown
 function fn(x: unknown) {
   x(); // ❌
   x.a(); // ❌
 }
-```
 
-### Collection Types
-
-1. Union
-
-```ts
-type A = 1 | 2 | 3;
-type B = number | string;
-```
-
-2. Intersection
-
-```ts
-type A = number | boolean;
-type B = number | string;
-type C = A & B; // number
+// Never
+function fn(x: number) {
+  if (typeof x !== "number") {
+    console.log(x); // x: never (empty set)
+  }
+}
 ```
 
 ## Type Inference
