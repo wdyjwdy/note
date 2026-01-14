@@ -4,6 +4,7 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "build:prod": "env=prod bun build/build.ts",
     "build": "bun build/build.ts",
     "serve": "bun build/serve.ts & bun .site/*.html .site/**/*.html"
   },

@@ -36,9 +36,19 @@ async function getFileNames(path: string) {
 		.map((path) => join(path.parentPath, path.name))
 }
 
+function addPrefix(html: string) {
+	html = html.replace(/(?<=img src=")(.+?)(?=")/g, '/static/imgs/$1.svg')
+	if (process.env.env === 'prod') {
+		html = html.replace(/\/static\//g, '/note/static/')
+	}
+	return html
+}
+
 async function buildContentFile(path: string) {
 	if (path.endsWith('.html')) {
-		await Bun.write('.site/index.html', Bun.file(path))
+		let html = await Bun.file(path).text()
+		html = addPrefix(html)
+		await Bun.write('.site/index.html', html)
 		return
 	}
 
@@ -47,6 +57,7 @@ async function buildContentFile(path: string) {
 	if (frontmatter.toc) markdown = '[[toc]]\n' + markdown
 	let html = mdit.render(markdown)
 	html = hdbs({ content: html, ...frontmatter })
+	html = addPrefix(html)
 
 	// write
 	const outputPath = path.replace('content/', '.site/').replace('.md', '.html')
