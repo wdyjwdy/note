@@ -1,0 +1,21 @@
+{
+  "name": "note",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "bun build/build.ts",
+    "serve": "bun build/serve.ts & bun .site/*.html .site/**/*.html"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.3.11",
+    "@types/bun": "latest",
+    "handlebars": "^4.7.8",
+    "markdown-it": "^14.1.0",
+    "markdown-it-anchor": "^9.2.0",
+    "markdown-it-table-of-contents": "^1.1.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}
