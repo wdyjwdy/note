@@ -1,3 +1,5 @@
+import katex from 'katex'
+
 export default function plugin(md: any) {
 	const defaultFence = md.renderer.rules.fence
 
@@ -12,9 +14,38 @@ export default function plugin(md: any) {
 				return color(escapeContent)
 			case 'pre':
 				return pre(content)
+			case 'math':
+				return math(content)
 			default:
 				return defaultFence(tokens, idx, options, env, self)
 		}
+	}
+
+	md.inline.ruler.after('escape', 'inline_math', (state, silent) => {
+		const src = state.src
+		const pos = state.pos
+
+		if (src[pos] !== '$') return false
+
+		let start = pos + 1
+		let end = start
+		while (end < src.length && src[end] !== '$') end++
+		if (end >= src.length) return false
+
+		if (!silent) {
+			const token = state.push('inline_math', '', 0)
+			token.content = src.slice(start, end)
+		}
+
+		state.pos = end + 1
+		return true
+	})
+
+	md.renderer.rules.inline_math = (tokens, idx) => {
+		return katex.renderToString(tokens[idx].content, {
+			output: 'mathml',
+			displayMode: false,
+		})
 	}
 }
 
@@ -39,4 +70,8 @@ function pre(rawCode: string) {
 			<template shadowrootmode="open">${rawCode}</template>
 		</div>
 	`
+}
+
+function math(code: string) {
+	return katex.renderToString(code, { output: 'mathml' })
 }
