@@ -16,6 +16,15 @@ toc: true
 - Search Boundary:
   [34](https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/description/)
 
+### Two Pointers
+
+- Left and Right:
+  [167](https://leetcode.cn/problems/two-sum-ii-input-array-is-sorted/description/),
+  [344](https://leetcode.cn/problems/reverse-string/description/)
+- Fast and Slow:
+  [26](https://leetcode.cn/problems/remove-duplicates-from-sorted-array/description/),
+  [27](https://leetcode.cn/problems/remove-element/description/)
+
 ## SQL
 
 - Group By & Aggregate Function:
@@ -30,4 +39,5 @@ toc: true
 
 ## Appendix
 
-- [算法通关手册](https://algo.itcharge.cn)
+- [Algo Note](https://algo.itcharge.cn)
+- [Hello Algo](https://www.hello-algo.com/)
