@@ -32,7 +32,7 @@ async function getFileNames(path: string) {
 		withFileTypes: true,
 	})
 	return paths
-		.filter((path) => path.isFile())
+		.filter((path) => path.isFile() && !path.name.endsWith('index.html'))
 		.map((path) => join(path.parentPath, path.name))
 }
 
@@ -44,22 +44,19 @@ function addPrefix(html: string) {
 	return html
 }
 
-async function buildContentFile(path: string) {
-	if (path.endsWith('.html')) {
-		let html = await Bun.file(path).text()
-		html = addPrefix(html)
-		await Bun.write('.site/index.html', html)
-		return
-	}
+async function buildIndexFile(pages: object[]) {
+	let html = await Bun.file('content/index.html').text()
+	html = addPrefix(html)
+	html = html.replace("'@pages'", JSON.stringify(pages))
+	await Bun.write('.site/index.html', html)
+}
 
-	// build
+async function buildContentFile(path: string) {
 	let { frontmatter, markdown } = await parseContentFile(path)
 	if (frontmatter.toc) markdown = '[[toc]]\n' + markdown
 	let html = mdit.render(markdown)
 	html = hdbs({ content: html, ...frontmatter })
 	html = addPrefix(html)
-
-	// write
 	const outputPath = path.replace('content/', '.site/').replace('.md', '.html')
 	await Bun.write(outputPath, html)
 }
@@ -70,12 +67,25 @@ async function buildStaticFile(path: string) {
 	await Bun.write(outputPath, file)
 }
 
+async function buildSearchFile(paths: string[]) {
+	const pages: object[] = []
+	for (let path of paths) {
+		const { frontmatter } = await parseContentFile(path)
+		path = path.slice(8, -3)
+		pages.push({ path, ...frontmatter })
+	}
+	return pages
+}
+
 async function build() {
 	const contentPaths = await getFileNames('content')
 	await Promise.all(contentPaths.map((path) => buildContentFile(path)))
 
 	const staticPaths = await getFileNames('static')
 	await Promise.all(staticPaths.map((path) => buildStaticFile(path)))
+
+	const pages = await buildSearchFile(contentPaths)
+	await buildIndexFile(pages)
 }
 
 async function buildWithTiming() {

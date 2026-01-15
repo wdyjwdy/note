@@ -1,6 +1,6 @@
 ---
 title: SQL
-category: Tools
+group: Tools
 toc: true
 ---
 
