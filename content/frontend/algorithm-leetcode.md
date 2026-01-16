@@ -38,6 +38,26 @@ toc: true
   [674](https://leetcode.cn/problems/longest-continuous-increasing-subsequence/description/),
   [1004](https://leetcode.cn/problems/max-consecutive-ones-iii/description/)
 
+## Linked List
+
+### Two Pointers
+
+- Fast and Slow:
+  [206](https://leetcode.cn/problems/reverse-linked-list/description/),
+  [203](https://leetcode.cn/problems/remove-linked-list-elements/description/),
+  [328](https://leetcode.cn/problems/odd-even-linked-list/description/),
+  [83](https://leetcode.cn/problems/remove-duplicates-from-sorted-list/description/),
+  [61](https://leetcode.cn/problems/rotate-list/description/),
+  [19](https://leetcode.cn/problems/remove-nth-node-from-end-of-list/description/),
+  [876](https://leetcode.cn/problems/middle-of-the-linked-list/description/),
+  [141](https://leetcode.cn/problems/linked-list-cycle/description/),
+  [142](https://leetcode.cn/problems/linked-list-cycle-ii/description/),
+  [160](https://leetcode.cn/problems/intersection-of-two-linked-lists/description/)
+
+## Stack
+
+## Queue
+
 ## SQL
 
 - Group By & Aggregate Function:
