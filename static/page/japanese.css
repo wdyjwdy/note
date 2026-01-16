@@ -1,0 +1,30 @@
+html {
+	font-family: Hiragino Mincho ProN;
+}
+
+h3 {
+	font-weight: normal;
+	font-size: 1em;
+
+	&::before {
+		content: "✦";
+	}
+}
+
+ol {
+	padding-left: 42px;
+	font-family: Hiragino Sans GB;
+}
+
+code {
+	white-space: pre-line;
+
+	.text {
+		font-family: Hiragino Mincho ProN;
+	}
+
+	.comment {
+		font-family: STSong;
+		color: oklch(0.5 0 0 / 0.5);
+	}
+}

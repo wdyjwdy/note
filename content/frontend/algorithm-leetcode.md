@@ -56,6 +56,14 @@ toc: true
 
 ## Stack
 
+- Basic Stack:
+  [20](https://leetcode.cn/problems/valid-parentheses/description/),
+  [227](https://leetcode.cn/problems/basic-calculator-ii/description/),
+  [150](https://leetcode.cn/problems/evaluate-reverse-polish-notation/description/),
+  [155](https://leetcode.cn/problems/min-stack/description/)
+
+- Monotone Stack:
+
 ## Queue
 
 ## SQL

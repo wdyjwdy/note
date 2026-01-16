@@ -15,5 +15,11 @@
 			"quoteStyle": "single",
 			"semicolons": "asNeeded"
 		}
+	},
+	"css": {
+		"formatter": {
+			"enabled": true,
+			"indentWidth": 4
+		}
 	}
 }

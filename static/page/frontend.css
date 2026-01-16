@@ -1,3 +1,7 @@
-h1 {
-  color: darkred;
+html {
+	font-family: Hiragino Mincho ProN;
+}
+
+code {
+	font-family: PT Mono;
 }
