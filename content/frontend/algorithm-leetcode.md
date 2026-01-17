@@ -63,8 +63,23 @@ toc: true
   [155](https://leetcode.cn/problems/min-stack/description/)
 
 - Monotone Stack:
+  [739](https://leetcode.cn/problems/daily-temperatures/description/)
 
 ## Queue
+
+- Basic Queue:
+- Priority Queue:
+
+## Hash Table
+
+- Set:
+  [128](https://leetcode.cn/problems/longest-consecutive-sequence/description/)
+
+- Map:
+  [1](https://leetcode.cn/problems/two-sum/submissions/),
+  [242](https://leetcode.cn/problems/valid-anagram/description/)
+
+## String
 
 ## SQL
 
