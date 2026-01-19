@@ -1,15 +1,5 @@
 {
 	"$schema": "https://biomejs.dev/schemas/2.3.10/schema.json",
-	"formatter": {
-		"enabled": true,
-		"indentStyle": "tab"
-	},
-	"linter": {
-		"enabled": true,
-		"rules": {
-			"recommended": true
-		}
-	},
 	"javascript": {
 		"formatter": {
 			"quoteStyle": "single",
@@ -18,8 +8,7 @@
 	},
 	"css": {
 		"formatter": {
-			"enabled": true,
-			"indentWidth": 4
+			"enabled": true
 		}
 	}
 }
