@@ -4,11 +4,12 @@ group: Algorithm
 toc: true
 ---
 
-| Name           | Time        | Space | Compares | Exchanges | Stability |
-| -------------- | ----------- | ----- | -------- | --------- | --------- |
-| Selection Sort | O(n**2)     | O(1)  | N(N-1)/2 | N         | ❌        |
-| Insertion Sort | O(n**2)     | O(1)  | N(N-1)/2 | N(N-1)/2  | ✅        |
-| Shell Sort     | O(n**(3/2)) | O(1)  |          |           | ❌        |
+| Name           | Time     | Space | Compares | Exchanges | Stability |
+| -------------- | -------- | ----- | -------- | --------- | --------- |
+| Selection Sort | N**2     | 1     | N(N-1)/2 | N         | ❌        |
+| Insertion Sort | N**2     | 1     | N(N-1)/2 | N(N-1)/2  | ✅        |
+| Shell Sort     | N**(3/2) | 1     |          |           | ❌        |
+| Quick Sort     | NlgN     | 1     | 2*NlnN   | NlnN/3    | ❌        |
 
 ## Selection Sort
 
@@ -32,3 +33,16 @@ toc: true
 
 1. H-Sorting
 2. Insertion Sort
+
+## Merge Sort
+
+1. Partition: break the array into two subarrays to be sorted
+2. Merge: combine the ordered subarrays
+
+## Quick Sort
+
+> Improvements
+>
+> - Switch to insertion sort for tiny subarrays.
+> - Use `median(l,m,h)` as the partitioning item.
+> - Skip subarrays with same items.
