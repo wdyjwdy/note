@@ -1,6 +1,5 @@
 import { readdir } from 'node:fs/promises'
 import { join } from 'node:path'
-import handlebars from 'handlebars'
 import markdownit from 'markdown-it'
 import markdownitAnchor from 'markdown-it-anchor'
 import markdownitTOC from 'markdown-it-table-of-contents'
@@ -11,7 +10,6 @@ const mdit = markdownit()
 	.use(markdownitTOC, { includeLevel: [2, 3] })
 	.use(markdownitPlugin)
 const template = await Bun.file('build/template.html').text()
-const hdbs = handlebars.compile(template)
 
 async function parseContentFile(path: string) {
 	const text = await Bun.file(path).text()
@@ -44,6 +42,11 @@ function addPrefix(html: string) {
 	return html
 }
 
+function addTemplate(html: string, data: object) {
+	data['content'] = html
+	return template.replace(/{{(.*?)}}/g, (_, v) => data[v] ?? '')
+}
+
 async function buildIndexFile(pages: object[]) {
 	let html = await Bun.file('content/index.html').text()
 	html = addPrefix(html)
@@ -55,7 +58,7 @@ async function buildContentFile(path: string) {
 	let { frontmatter, markdown } = await parseContentFile(path)
 	if (frontmatter.toc) markdown = '[[toc]]\n' + markdown
 	let html = mdit.render(markdown)
-	html = hdbs({ content: html, ...frontmatter })
+	html = addTemplate(html, frontmatter)
 	html = addPrefix(html)
 	const outputPath = path.replace('content/', '.site/').replace('.md', '.html')
 	await Bun.write(outputPath, html)
