@@ -10,9 +10,9 @@ A bag is a collection where removing items is not supported. The order is immate
 
 |         | ArrayBag | LinkedBag |
 | ------- | -------- | --------- |
-| add     | $O(1)$   | $O(1)$    |
-| size    | $O(1)$   | $O(1)$    |
-| isEmpty | $O(1)$   | $O(1)$    |
+| add     | O(1)     | O(1)      |
+| size    | O(1)     | O(1)      |
+| isEmpty | O(1)     | O(1)      |
 
 ### ArrayBag
 
@@ -72,10 +72,10 @@ A stack is a collection that is based on the last-in-first-out (LIFO) policy.
 
 |         | ArrayStack | LinkedStack |
 | ------- | ---------- | ----------- |
-| push    | $O(1)$     | $O(1)$      |
-| pop     | $O(1)$     | $O(1)$      |
-| size    | $O(1)$     | $O(1)$      |
-| isEmpty | $O(1)$     | $O(1)$      |
+| push    | O(1)       | O(1)        |
+| pop     | O(1)       | O(1)        |
+| size    | O(1)       | O(1)        |
+| isEmpty | O(1)       | O(1)        |
 
 ### ArrayStack
 
@@ -149,10 +149,10 @@ A queue is a collection that is based on the first-in-first-out (FIFO) policy.
 
 |         | ArrayQueue | LinkedQueue |
 | ------- | ---------- | ----------- |
-| enqueue | $O(1)$     | $O(1)$      |
-| dequeue | $O(n)$     | $O(1)$      |
-| size    | $O(1)$     | $O(1)$      |
-| isEmpty | $O(1)$     | $O(1)$      |
+| enqueue | O(1)       | O(1)        |
+| dequeue | O(n)       | O(1)        |
+| size    | O(1)       | O(1)        |
+| isEmpty | O(1)       | O(1)        |
 
 ### ArrayQueue
 
@@ -240,10 +240,10 @@ class LinkedQueue<Item> {
 
 |             | SinglyLinkedList | DoublyLinkedList |
 | ----------- | ---------------- | ---------------- |
-| insertFirst | $O(1)$           | $O(1)$           |
-| insertLast  | $O(1)$           | $O(1)$           |
-| removeFirst | $O(1)$           | $O(1)$           |
-| removeLast  | $O(n)$           | $O(1)$           |
+| insertFirst | O(1)             | O(1)             |
+| insertLast  | O(1)             | O(1)             |
+| removeFirst | O(1)             | O(1)             |
+| removeLast  | O(n)             | O(1)             |
 
 ### SinglyLinkedList
 
