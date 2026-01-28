@@ -91,6 +91,20 @@ toc: true
 - Memoization Search:
   []()
 
+## Tree
+
+- Traversal:
+  [144](https://leetcode.cn/problems/binary-tree-preorder-traversal/description/),
+  [102](https://leetcode.cn/problems/binary-tree-level-order-traversal/description/),
+  [104](https://leetcode.cn/problems/maximum-depth-of-binary-tree/description/),
+  [112](https://leetcode.cn/problems/path-sum/description/),
+  [226](https://leetcode.cn/problems/invert-binary-tree/description/)
+
+## Graph
+
+- DFS:
+  [200](https://leetcode.cn/problems/number-of-islands/description/)
+
 ## SQL
 
 - Group By & Aggregate Function:
