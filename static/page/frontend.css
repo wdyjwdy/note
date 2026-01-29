@@ -5,3 +5,12 @@ html {
 code {
 	font-family: PT Mono;
 }
+
+code[class="seq"] {
+	display: flex;
+	justify-content: center;
+}
+
+pre:has(code[class="seq"]) {
+	border: none;
+}

@@ -1,3 +1,5 @@
+import { generateSequenceDiagramSvg } from './sequence-diagram'
+
 export default function plugin(md: any) {
 	const defaultFence = md.renderer.rules.fence
 
@@ -12,6 +14,8 @@ export default function plugin(md: any) {
 				return color(escapeContent)
 			case 'pre':
 				return pre(content)
+			case 'seq':
+				return seq(content)
 			default:
 				return defaultFence(tokens, idx, options, env, self)
 		}
@@ -40,4 +44,9 @@ function pre(rawCode: string) {
 			<template shadowrootmode="open">${rawCode}</template>
 		</div>
 	`
+}
+
+function seq(rawCode: string) {
+	const tmp = generateSequenceDiagramSvg(rawCode)
+	return `<pre><code class="seq">${tmp}</code></pre>`
 }
