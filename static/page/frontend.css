@@ -6,11 +6,23 @@ code {
 	font-family: PT Mono;
 }
 
-code[class="seq"] {
-	display: flex;
-	justify-content: center;
-}
-
 pre:has(code[class="seq"]) {
 	border: none;
+	text-align: center;
+
+	.note rect {
+		fill: oklch(1 0.1 100 / 1);
+		stroke: oklch(0.8 0.1 100 / 1);
+	}
+
+	.actor {
+		rect {
+			fill: oklch(0.9 0.05 250 / 1);
+			stroke: oklch(0.7 0.05 250 / 1);
+		}
+
+		line {
+			stroke: oklch(0.7 0.05 250 / 1);
+		}
+	}
 }

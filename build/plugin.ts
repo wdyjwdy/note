@@ -1,4 +1,4 @@
-import { generateSequenceDiagramSvg } from './sequence-diagram'
+import { seqSVG } from './seq'
 
 export default function plugin(md: any) {
 	const defaultFence = md.renderer.rules.fence
@@ -47,6 +47,6 @@ function pre(rawCode: string) {
 }
 
 function seq(rawCode: string) {
-	const tmp = generateSequenceDiagramSvg(rawCode)
+	const tmp = seqSVG(rawCode)
 	return `<pre><code class="seq">${tmp}</code></pre>`
 }
