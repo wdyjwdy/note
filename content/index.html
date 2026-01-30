@@ -31,12 +31,7 @@
   filterButtons.addEventListener("click", function (event) {
     if (event.target.tagName === "BUTTON") {
       searchButton.value = event.target.textContent;
-      const enterEvent = new KeyboardEvent("keydown", {
-        key: "Enter",
-        code: "Enter",
-        bubbles: true,
-      });
-      searchButton.dispatchEvent(enterEvent);
+      searchButton.dispatchEvent(new Event('input', {bubbles: true}));
     }
   });
 
