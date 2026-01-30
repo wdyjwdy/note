@@ -40,24 +40,27 @@
     }
   });
 
+  searchButton.addEventListener("input", function (event) {
+    searchResult.replaceChildren();
+    const query = this.value;
+    pages
+      .filter(({title, group, alias = []}) => {
+        const keys = [title, group, ...alias]
+        const regex = new RegExp(query, "i")
+        return keys.some(x => regex.test(x))
+      })
+      .forEach((x, i, a) => {
+        const prevGroup = a[i - 1]?.group;
+        if (x.group !== prevGroup) {
+          searchResult.insertAdjacentHTML("beforeend", `<p>${x.group}</p>`);
+        }
+        const item = `<a href="${x.path}">${x.title}</a>`
+        searchResult.insertAdjacentHTML("beforeend", item);
+      });
+  });
+
   searchButton.addEventListener("keydown", function (event) {
     if (event.code === "Enter") {
-      searchResult.replaceChildren();
-      const query = this.value;
-      pages
-        .filter(({title, group, alias = []}) => {
-          const keys = [title, group, ...alias]
-          const regex = new RegExp(query, "i")
-          return keys.some(x => regex.test(x))
-        })
-        .forEach((x, i, a) => {
-          const prevGroup = a[i - 1]?.group;
-          if (x.group !== prevGroup) {
-            searchResult.insertAdjacentHTML("beforeend", `<p>${x.group}</p>`);
-          }
-          const item = `<a href="${x.path}">${x.title}</a>`
-          searchResult.insertAdjacentHTML("beforeend", item);
-        });
       setTimeout(() => this.blur(), 0);　// close keyboard (safari)
     }
   });

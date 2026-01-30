@@ -1,8 +1,7 @@
 ---
 title: HTTP
-category: Network
+group: Network
 toc: ture
-mermaid: true
 ---
 
 ## Messages
@@ -15,6 +14,8 @@ Host: www.someschool.edu
 Connection: close
 User-agent: Mozilla/5.0
 Accept-language: fr
+
+(data data data data data ...)
 ```
 
 2. HTTP Response Message
@@ -39,9 +40,11 @@ desirable for a Web site to identify users, For this purposes, HTTP
 uses **cookies**.
 
 ```seq
+Note: first visit
 Client -> Server: req
 Server -> DB: create id=1
 Server -> Client: res (set-cookie: id=1)
+Note: second visit
 Client -> Server: req (cookie: id=1)
 Server -> DB: access id=1
 Server -> Client: res
@@ -111,12 +114,14 @@ Proxy -> Client: response
 1. **Non-Persistent Connections**: each request/response pair be sent over a separate TCP connection, delay is 4 RTTs.
 
 ```seq
-Client -> Server: TCP
-Server -> Client: TCP
+Note: TCP
+Client -> Server: TCP Handshake
+Server -> Client: TCP Handshake
 Client -> Server: request
 Server -> Client: HTML
-Client -> Server: TCP
-Server -> Client: TCP
+Note: TCP
+Client -> Server: TCP Handshake
+Server -> Client: TCP Handshake
 Client -> Server: request
 Server -> Client: JPEG
 ```
@@ -124,8 +129,9 @@ Server -> Client: JPEG
 2. **Persistent Connections**: each request/response pair be sent over the same TCP connection, delay is 3 RTTs.
 
 ```seq
-Client -> Server: TCP
-Server -> Client: TCP
+Note: TCP
+Client -> Server: TCP Handshake
+Server -> Client: TCP Handshake
 Client -> Server: request
 Server -> Client: HTML
 Client -> Server: request
@@ -194,3 +200,5 @@ request each one.
 Compressing using the HPACK algorithm reduces the header size.
 
 ## HTTP 3
+
+TCP and TLS requires two handshake phases. QUIC performs both the connection setup and encryption setup in 1 RTT. QUIC can use the previously stored session and encryption parameters, allowing data transmission without waiting for a full handshake.
