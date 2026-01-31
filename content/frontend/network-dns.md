@@ -4,6 +4,8 @@ group: Network
 toc: true
 ---
 
+## Overview
+
 DNS translates hostnames to IP addresses.
 
 ## Lookup
