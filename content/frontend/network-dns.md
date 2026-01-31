@@ -79,6 +79,7 @@ DNS server cached records are tampered with, resulting in an incorrect IP addres
 DNS load balancing uses the DNS to distribute site traffic across several servers
 
 **Round-Robin DNS**: The server cyclically returns IP addresses in different orders
+
 ![](network-dns-load-balancing)
 
 ## Appendix
