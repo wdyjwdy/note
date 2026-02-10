@@ -9,7 +9,6 @@
     "serve": "bun build/serve.ts & bun .site/*.html .site/**/*.html"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.3.11",
     "@types/bun": "latest",
     "markdown-it": "^14.1.0",
     "markdown-it-anchor": "^9.2.0",
