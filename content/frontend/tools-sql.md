@@ -16,21 +16,23 @@ Define constraints on columns.
 - Disallows NULL.
 - Each table can have only one primary key.
 
+> RDBMS will create a unique index to enforce uniqueness.
+
 #### Unique
 
 - Each row must be unique.
-- Allows NULL.
+- Allows multiple NULLs.
 - Each table can have multiple unique keys.
+
+> RDBMS will create a unique index to enforce uniqueness.
 
 #### Foreign Key
 
 - Each row must belong to another column (Primary Key or Unique).
 - Allows NULL.
 
-> **Why must a Foreign Key reference a Primary Key or UNIQUE constraint?**
->
-> - Avoid Ambiguity: the referenced row must be uniquely identifiable.
-> - Efficient Lookups: the referenced column always have an index to allow efficient lookups on whether a referencing row has a match.
+> **Why must reference a Primary Key or UNIQUE constraint?**\
+> Avoid Ambiguity: the referenced row must be uniquely identifiable.
 
 #### Check
 
@@ -41,7 +43,28 @@ Define constraints on columns.
 
 - Disallows NULL.
 
-> In PostgreSQL, NOT NULL is more efficient than CHECK(id IS NOT NULL).
+### CREATE
+
+```sql
+CREATE TABLE animals (
+    id INTEGER PRIMARY KEY,
+    name TEXT
+);
+```
+
+### INSERT
+
+```sql
+INSERT INTO animals VALUES
+(1, 'A'),
+(2, 'B');
+```
+
+### DROP
+
+```sql
+DROP TABLE animals;
+```
 
 ## Data Manipulation
 
@@ -50,15 +73,19 @@ Define constraints on columns.
 The clauses are logically processed in the following order:
 
 1. FROM
-2. WHERE (Expressions -> DISTINCT)
+2. WHERE
 3. GROUP BY
 4. HAVING
 5. SELECT
-6. ORDER BY (OFFSET -> LIMIT)
+   - Expressions
+   - DISTINCT
+6. ORDER BY
+   - OFFSET
+   - LIMIT
 
 > The database engine doesn't have to follow logical query processing, as long as the final result would be the same.
 
-> **All-at-once Operations**: all expressions that appear in the same logical query processing phase are evaluated logically at the same point in time.
+> **All-at-once Operations**: expressions evaluated at the same phase are unordered.
 
 #### FROM
 
@@ -79,9 +106,11 @@ FROM employees
 WHERE id = 1;
 ```
 
+> The WHERE clause can use indexes to improve query performance.
+
 #### GROUP BY
 
-Produces a group for each distinct combination.
+Groups rows by specified columns.
 
 ```sql
 SELECT city
@@ -91,7 +120,7 @@ GROUP BY city;
 
 > All phases subsequent to the GROUP BY phase operate on groups. Each group is represented by a single row.
 
-Elements that do not participate in the GROUP BY clause are allowed only as inputs to an [aggregate function](#aggregate-function).
+Elements that do not participate in the GROUP BY clause are allowed only as inputs to an [aggregate function](#aggregate-functions).
 
 ```sql
 SELECT city, AVG(salary)
@@ -101,18 +130,18 @@ GROUP BY city;
 
 #### HAVING
 
-Specify a predicate to filter the groups. Because the HAVING clause is processed after the rows have been grouped, you can refer to [aggregate function](#aggregate-function) in the HAVING filter predicate.
+Specify a predicate to filter the groups. Because the HAVING clause is processed after the rows have been grouped, you can refer to [aggregate function](#aggregate-functions) in the HAVING filter predicate.
 
 ```sql
 SELECT city
 FROM employees
 GROUP BY city
-HAVING AVG(salary) > 20000; -- filter groups
+HAVING AVG(salary) > 20000;
 ```
 
 #### SELECT
 
-Specify the columns you want to return in the result table of the query.
+Specify the columns you want to return.
 
 ```sql
 SELECT name
@@ -139,6 +168,8 @@ You can use DISTINCT clause to remove duplicate rows.
 SELECT DISTINCT city
 FROM employees;
 ```
+
+> DISTINCT does not retain columns that are not included in the SELECT list.
 
 #### ORDER BY
 
@@ -259,3 +290,6 @@ Set operators are operators that combine rows from two query result sets. You ca
 - SQL: structured query language.
 - RDBMS: relational database management system.
 - Predicate: a logical expression that evaluate to TRUE, FALSE, or UNKNOWN.
+- NULL: not a value but rather a marker for a missing value.
+- Table: unordered set of rows.
+- Cursor: ordered set of rows.
