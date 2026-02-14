@@ -227,21 +227,17 @@ LIMIT 5 OFFSET 5; -- return lines 5 to 10
 
 ### Subqueries
 
-- **Scalar Subquery**: similar to an expression.
-- **Multivalued Subquery**: IN operate on a multivalued subquery.
+A subquery can return a single value, multiple values, or a table.
 
 #### Self-Contained Subqueries
 
-Self-contained subqueries are subqueries that are independent of the tables in the outer query.
-
-- the subquery is evaluated only once before the outer query is evaluated.
+- Has no dependency on tables from the outer query.
+- Evaluated only once.
 
 #### Correlated Subqueries
 
-Correlated subqueries are subqueries that refer to attributes from the tables that appear in the outer query.
-
-- the subquery cannot be invoked as a standalone query.
-- the subquery is evaluated separately for each outer row in the logical query processing step in which it appears.
+- Has dependency on tables from the outer query.
+- Evaluated separately for each outer row.
 
 ### Joins
 
@@ -252,12 +248,12 @@ Correlated subqueries are subqueries that refer to attributes from the tables th
 #### INNER JOIN
 
 1. Cartesian Product
-2. ON Filter
+2. Filter Rows
 
 #### OUTER JOIN
 
 1. Cartesian Product
-2. ON Filter
+2. Filter Rows
 3. Add Outer Rows
 
 ### Aggregate Functions
