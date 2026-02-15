@@ -256,6 +256,51 @@ A subquery can return a single value, multiple values, or a table.
 2. Filter Rows
 3. Add Outer Rows
 
+#### LATERAL
+
+The right table can reference columns from the left table.
+
+### Table Expressions
+
+#### Derived Tables
+
+A subquery that returns a table.
+
+```sql
+SELECT *
+FROM (<query>);
+```
+
+#### Common Table Expressions (CTEs)
+
+Has a different namespace from Derived Tables.
+
+```sql
+WITH students AS (
+   <query>
+)
+<query>
+```
+
+CTEs support recursion.
+
+```sql
+WITH students AS (
+   <query> -- invoed only once
+   UNION ALL
+   <query> -- invoked repeatedly until it returns an empty set
+)
+<query>
+```
+
+#### Views
+
+A query stored in the database.
+
+#### Inline table-valued functions (TVFs)
+
+Similar to a View with parameters.
+
 ### Aggregate Functions
 
 An aggregate function computes a single result from multiple input rows.
