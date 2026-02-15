@@ -285,7 +285,7 @@ WITH students AS (
 CTEs support recursion.
 
 ```sql
-WITH students AS (
+WITH RECURSIVE students AS (
    <query> -- invoed only once
    UNION ALL
    <query> -- invoked repeatedly until it returns an empty set
