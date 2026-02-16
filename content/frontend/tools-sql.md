@@ -320,11 +320,14 @@ You can also use COUNT, SUM, AVG, MIN, or MAX.
 
 ### Set Operators
 
-Set operators are operators that combine rows from two query result sets. You can use ALL to preserve duplicates.
+Combine rows from two query result. You can use ALL to preserve duplicates.
 
-- UNION
-- INTERSECT
-- EXCEPT
+|                                      | Deduplicate | Result |
+| ------------------------------------ | ----------- | ------ |
+| UNION, INTERSECT, EXCEPT             | Yes         | Set    |
+| UNION ALL, INTERSECT ALL, EXCEPT ALL | No          | Bag    |
+
+> NULL is treated like non-NULL values.
 
 ## Appendix
 
