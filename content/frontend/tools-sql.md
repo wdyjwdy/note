@@ -312,11 +312,13 @@ Such as COUNT, SUM, AVG, MIN, or MAX.
 ### Window Functions
 
 An window function computes a single result from multiple input rows.
-Such as ROW_NUMBER, RANK, DENSE_RANK, LAG, LEAD.
-You can also use COUNT, SUM, AVG, MIN, or MAX.
+Such as ROW_NUMBER, RANK, DENSE_RANK, LAG, LEAD, COUNT, SUM, AVG, MIN, or MAX.
 
-1. Context: output of the GROUP BY clause
+1. Context: output of the HAVING clause
 2. Window: defined by the OVER clause
+   - PARTITION BY: define group
+   - ORDER BY: define ordering
+   - ROWS BETWEEN AND: filter frame
 
 ### Set Operators
 
