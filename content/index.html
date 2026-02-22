@@ -49,7 +49,10 @@
         if (x.group !== prevGroup) {
           searchResult.insertAdjacentHTML("beforeend", `<p>${x.group}</p>`);
         }
-        const item = `<a href="${x.path}">${x.title}</a>`
+        let item = `<a href="${x.path}">${x.title}</a>`
+        if (x.alias) {
+          item = `<a href="${x.path}">${x.alias.join('、')}</a>`
+        }
         searchResult.insertAdjacentHTML("beforeend", item);
       });
   });

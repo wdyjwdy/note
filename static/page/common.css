@@ -95,3 +95,38 @@ pre {
 img {
 	max-width: min(100%, 800px);
 }
+
+pre code[class="color"] {
+	.red {
+		color: indianred;
+	}
+
+	.green {
+		color: seagreen;
+	}
+
+	.blue {
+		color: slateblue;
+	}
+
+	.gray {
+		color: gray;
+	}
+}
+pre code[class="diff"] {
+	.add {
+		color: seagreen;
+		background-color: lightgoldenrodyellow;
+	}
+
+	.del {
+		color: indianred;
+		background-color: antiquewhite;
+	}
+}
+
+pre code[class="text"] {
+	.comment {
+		color: gray;
+	}
+}

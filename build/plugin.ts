@@ -16,6 +16,8 @@ export default function plugin(md: any) {
 				return pre(content)
 			case 'seq':
 				return seq(content)
+			case 'diff':
+				return diff(escapeContent)
 			default:
 				return defaultFence(tokens, idx, options, env, self)
 		}
@@ -31,11 +33,10 @@ function example(code: string) {
 }
 
 function color(code: string) {
-	const tmp = code.replace(
-		/@\[(\w+)\]\{([^}]*)\}/g,
-		`<span style="color: $1">$2</span>`,
-	)
-	return `<pre><code class="language-color">${tmp}</code></pre>`
+	const tmp = code
+		.replace(/@\[([-\w]+)\]\{([^}]*)\}/g, `<span class="$1">$2</span>`)
+		.replace(/(#.*)/g, `<span class="gray">$1</span>`)
+	return `<pre><code class="color">${tmp}</code></pre>`
 }
 
 function pre(rawCode: string) {
@@ -49,4 +50,11 @@ function pre(rawCode: string) {
 function seq(rawCode: string) {
 	const tmp = seqSVG(rawCode)
 	return `<pre><code class="seq">${tmp}</code></pre>`
+}
+
+function diff(code: string) {
+	const tmp = code
+		.replace(/(\+.*)/g, `<span class="add">$1</span>`)
+		.replace(/(\-.*)/g, `<span class="del">$1</span>`)
+	return `<pre><code class="diff">${tmp}</code></pre>`
 }
