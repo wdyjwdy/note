@@ -6,6 +6,10 @@ code {
 	font-family: PT Mono;
 }
 
+code:not(pre code) {
+	color: indianred;
+}
+
 pre:has(code[class="seq"]) {
 	border: none;
 	text-align: center;
