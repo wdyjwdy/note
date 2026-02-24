@@ -28,7 +28,7 @@ Object.hasOwn(obj, 'a') // true
 Object.hasOwn(obj, 'toString') // false
 ```
 
-### Prototypes
+### Prototype
 
 Almost every JavaScript object has a second JavaScript object associated with it. This second object is known as a prototype, and the first object inherits properties from the prototype.
 
@@ -42,7 +42,7 @@ let obj = Object.create(null)  // prototype is null
 
 ### Inheritance
 
-JavaScript objects have a set of [own properties](#own-property), and they also inherit a set of properties from their [prototype object](#prototypes).
+JavaScript objects have a set of [own properties](#own-property), and they also inherit a set of properties from their [prototype object](#prototype).
 
 ```js
 let b = { y: 2 } // inherited properties
@@ -80,7 +80,7 @@ a.length = 1 // a is [1]
 a.length = 3 // a is [1, , ,]
 ```
 
-### Array-Like Objects
+### Array-Like Object
 
 An array-like object must satisfy the following conditions:
 
@@ -117,3 +117,86 @@ An iterable object must satisfy the following conditions:
 | return             |  O  |   O    |    X    |
 | skip array element |  O  |   X    |    X    |
 | skip array hole    |  X  |   X    |    O    |
+
+## Function
+
+### This
+
+| Invoke Way     | This Value                          |
+| -------------- | ----------------------------------- |
+| Function       | undefind, globalThis (non-strict)   |
+| Method         | calling object                      |
+| Constructor    | instance                            |
+| Arrow Function | inherit from their defining context |
+
+```js
+// function
+
+function f() {
+	console.log(this) // undefined
+}
+f()
+
+// method
+
+let o1 = {
+	f() {
+		console.log(this) // o1
+	},
+}
+o1.f()
+
+// nested function
+
+let o2 = {
+	f() {
+		function g() {
+			console.log(this) // undefined
+		}
+		g()
+	},
+}
+o2.f()
+
+// arrow function
+
+let o3 = {
+	f() {
+		const g = () => {
+			console.log(this) // o3
+		}
+		g()
+	},
+}
+o3.f()
+
+// constructor
+
+function Dog() {
+	console.log(this) // dog
+}
+let dog = new Dog()
+```
+
+### Closure
+
+The closure capture the local variable bindings of the outer function within which they are defined.
+
+```js
+function Counter() {
+	let count = 0 // captured variable
+	return {
+		increment() {
+			count++
+		},
+		print() {
+			console.log(count)
+		},
+	}
+}
+
+let counter = Counter()
+counter.increment()
+counter.increment()
+counter.print()
+```
