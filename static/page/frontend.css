@@ -7,7 +7,7 @@ code {
 }
 
 code:not(pre code) {
-	color: indianred;
+	color: seagreen;
 }
 
 pre:has(code[class="seq"]) {

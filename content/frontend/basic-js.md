@@ -200,3 +200,89 @@ counter.increment()
 counter.increment()
 counter.print()
 ```
+
+## Iteration
+
+### Iterator
+
+An iterator consists of three components:
+
+1. **iterable object**: an object that returns an iterator object, via the `Symbol.iterator()` method.
+2. **iterator object**: an object that returns an iteration result object, via the `next()` method.
+3. **iteration result object**: an object with `value` and `done` properties.
+
+```js
+class Range { // iterable object
+	constructor(from, to) {
+		this.from = from
+		this.to = to
+	}
+
+	[Symbol.iterator]() {
+		let [start, end] = [this.from, this.to]
+		return { // iterator object
+			next() {
+				return start < end
+					? { value: start++ } // iteration result object
+					: { done: true } // iteration result object
+			},
+		}
+	}
+}
+```
+
+To iterate an iterable object, you first call its `Symbol.iterator()` method to get an iterator object. Then, you call the `next()` method of the iterator object repeatedly until the returned value has its `done` property set to true.
+
+```js
+let iterable = new Range(1, 5)
+let iterator = iterable[Symbol.iterator]()
+let result = iterator.next() // { value: 1 }
+```
+
+### Generator
+
+A generator is a kind of iterator defined with powerful new ES6 syntax.
+
+```js
+class Range {
+	constructor(from, to) {
+		this.from = from
+		this.to = to
+	}
+
+	*[Symbol.iterator]() {
+		for (let i = this.from; i < this.to; i++) {
+			yield i
+		}
+	}
+}
+```
+
+When you invoke a generator function, it does not actually execute the function body, but instead returns an iterator. Calling its `next()` method causes the body of the generator function to run from the current position until it reaches a yield statement.
+
+### Yield
+
+When the `next()` method is invoked, the generator function runs until it reaches a yield expression. The expression that follows the yield keyword is evaluated, and that value becomes the return value of the `next()` invocation.
+
+```color
+function* Nums() {
+	let x1 = yield @[red]{1}
+	let x2 = yield 2
+}
+
+let nums = Nums()
+let y1 = nums.next().value // @[red]{1}
+```
+
+The next time the `next()` method is called, the argument passed to `next()` becomes the value of the yield expression that was paused.
+
+```color
+function* Nums() {
+	let x1 = yield 1 // @[red]{200}
+	let x2 = yield 2
+}
+
+let nums = Nums()
+let y1 = nums.next(100).value // 1
+let y2 = nums.next(@[red]{200}).value // 2
+```
