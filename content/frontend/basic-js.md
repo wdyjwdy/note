@@ -40,6 +40,18 @@ let obj = Object.create(proto) // prototype is proto
 let obj = Object.create(null)  // prototype is null
 ```
 
+Objects can use `Object.getPrototypeOf()` to inspect their prototype, while functions can access their prototype through the `prototype` property.
+
+```js
+Object.getPrototypeOf({}) === Object.prototype // true
+```
+
+The prototype object has a `constructor` property that points to the constructor function.
+
+```js
+Object.prototype.constructor === Object // true
+```
+
 ### Inheritance
 
 JavaScript objects have a set of [own properties](#own-property), and they also inherit a set of properties from their [prototype object](#prototype).
@@ -201,6 +213,73 @@ counter.increment()
 counter.print()
 ```
 
+## Class
+
+### Creating
+
+Creating classes before ES6.
+
+```js
+function Dog(name) {
+	this.name = name                 // instance property
+}
+Dog.prototype.run = function () {} // instance method
+Dog.type = 'animal'                // static property
+Dog.isDog = function () {}         // static method
+```
+
+Creating classes after ES6.
+
+```js
+class Dog {
+	constructor(name) {
+		this.name = name     // instance property
+	}
+	run() {}               // instance method
+	static type = 'animal' // static property
+	static isDog() {}      // static method
+}
+```
+
+### Inheritance
+
+Class inheritance before ES6.
+
+```js
+function Animal() {}
+function Dog() {
+	Animal.call(this)
+}
+Object.setPrototypeOf(Dog.prototype, Animal.prototype)
+```
+
+Class inheritance after ES6.
+
+```js
+class Animal {}
+class Dog extends Animal {
+	constructor() {
+		super()
+	}
+}
+```
+
+### Composition
+
+Create a new class not by subclassing, but instead by wrapping other classes.
+
+```js
+class Stack {
+	items = [] // Use an Array instead of inheriting from Array.
+	push(item) {
+		this.items.push(item)
+	}
+	pop() {
+		return this.items.pop()
+	}
+}
+```
+
 ## Iteration
 
 ### Iterator
@@ -286,3 +365,58 @@ let nums = Nums()
 let y1 = nums.next(100).value // 1
 let y2 = nums.next(@[red]{200}).value // 2
 ```
+
+## Asynchronous
+
+### Callback
+
+A callback is a function that pass to some other function. That other function then invokes your function when some condition is met or some event occurs.
+
+```js
+setTimeout(fn, 1000)                 // timer
+button.addEventListener("click", fn) // event
+request.onload = fn                  // network
+fs.readFile("file", fn)              // node
+```
+
+#### Callback Hell
+
+One problem with callbacks is that it is common to end up with callbacks inside callbacks inside callbacks, with lines of code so highly indented that it is difficult to read.
+
+```js
+setTimeout(() => {
+	console.log('Step 1')
+	setTimeout(() => {
+		console.log('Step 2')
+		setTimeout(() => {
+			console.log('Step 3')
+		}, 1000)
+	}, 1000)
+}, 1000)
+```
+
+#### Difficult Error Handling
+
+Another problem with callbacks is that they can make handling errors difficult. If an asynchronous function throws an exception, there is no way for that exception to propagate back to the initiator of the asynchronous operation.
+
+### Promise
+
+A Promise is an object that represents the result of an asynchronous computation.
+
+```js
+fetch('url') // retrun a promise
+	.then(onFullfiled) // callback on success
+	.catch(onRejected) // callback on failure
+```
+
+A Promise has three states:
+
+1. **Pending**: neither fulfilled nor rejected.
+2. **Fulfilled**: when the success callback is called.
+3. **Rejected**: when the failure callback is called.
+
+Other related terms:
+
+- **Settled**: when a promise is fulfilled or rejected.
+
+> TODO: page 620
