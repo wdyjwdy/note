@@ -280,6 +280,32 @@ class Stack {
 }
 ```
 
+## Modules
+
+The goal of modular programming is to allow large programs to be assembled using modules of code from disparate authors and sources.
+
+1. Modules in Node (Common JS, CJS)
+
+```js
+// Export
+module.exports = { fn }
+
+// Import
+const { fn } = require('./test.js')
+```
+
+2. Modules in ES6 (EcmaScript Modules, ESM)
+
+```js
+// Export
+export { fn }
+
+// Import
+import { fn } from './test.js'
+```
+
+### 
+
 ## Iteration
 
 ### Iterator
