@@ -220,7 +220,7 @@ With the OFFSET clause you indicate how many rows to skip.
 ```sql
 SELECT id, name
 FROM employees
-LIMIT 5 OFFSET 5; -- return lines 5 to 10
+LIMIT 5 OFFSET 5; -- return lines 6 to 10
 ```
 
 > The rows skipped by an OFFSET clause still have to be computed inside the server, therefore a large OFFSET might be inefficient.
@@ -286,7 +286,7 @@ CTEs support recursion.
 
 ```sql
 WITH RECURSIVE students AS (
-   <query> -- invoed only once
+   <query> -- invoked only once
    UNION ALL
    <query> -- invoked repeatedly until it returns an empty set
 )

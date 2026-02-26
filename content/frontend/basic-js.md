@@ -304,8 +304,6 @@ export { fn }
 import { fn } from './test.js'
 ```
 
-### 
-
 ## Iteration
 
 ### Iterator
@@ -430,7 +428,7 @@ Another problem with callbacks is that they can make handling errors difficult. 
 A Promise is an object that represents the result of an asynchronous computation.
 
 ```js
-fetch('url') // retrun a promise
+fetch(url) // retrun a promise
 	.then(onFullfiled) // callback on success
 	.catch(onRejected) // callback on failure
 ```
@@ -444,5 +442,66 @@ A Promise has three states:
 Other related terms:
 
 - **Settled**: when a promise is fulfilled or rejected.
+- **Resolved**: the `resolve()` function has been invoked.
 
-> TODO: page 620
+#### Promise Chain
+
+The `then()` function returns a new Promise.
+
+```js
+fetch(url)   // return a promise
+	.then(fn1) // return a promise
+	.then(fn2) // return a promise
+```
+
+The return value of the `then()` determines the state of the Promise returned by `then()`.
+
+```js
+promise
+	.then(() => 1)           // fulfilled, 1
+	.then(() => { throw 0 }) // rejected, 0
+	.then(() => newPromise)  // pending
+```
+
+Promise values are passed through by default. Since `then()` is equivalent to `then(x => x, x => { throw x })`.
+
+```js
+Promise.resolve(1)
+	.then()
+	.then((v) => console.log(v)) // 1
+
+Promise.reject(1)
+	.then()
+	.catch((v) => console.log(v)) // 1
+```
+
+#### Event Loop
+
+JavaScript is single-threaded, and all tasks must be queued for execution. There are two types of tasks as follows:
+
+1. **macrotask**: script, setTimeout, setInterval, I/O, UI Rendering
+2. **microtask**: Promise.then, queueMicrotask, process.nextTick (Node)
+
+The order of task execution is as follows:
+
+1. Execute synchronous code.
+2. Execute all microtasks.
+3. Execute one macrotask.
+4. Return to step 2.
+
+```js
+console.log('script 1')
+setTimeout(() => {console.log('macrotask')}, 0)
+new Promise((resolve) => {
+  console.log('script 2')
+  resolve()
+})
+.then(() => {console.log('microtask')})
+ 
+// script 1
+// script 2
+// microtask
+// macrotask
+```
+
+### Async and Await
