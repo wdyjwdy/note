@@ -96,7 +96,7 @@ DNS load balancing uses the DNS to distribute site traffic across several server
 - `127.0.0.1` is a IP address.
 - `localhost` is a hostname, requires DNS to obtain its IP address.
 
-```
+```color
 # /etc/hosts
 127.0.0.1	localhost
 ```

@@ -20,6 +20,14 @@ export default function plugin(md: any) {
 				return defaultFence(tokens, idx, options, env, self)
 		}
 	}
+
+	// add table wrapper
+	md.renderer.rules.table_open = () => {
+		return '<div class="table-wrapper"><table>'
+	}
+	md.renderer.rules.table_close = () => {
+		return '</table></div>'
+	}
 }
 
 function example(code: string) {

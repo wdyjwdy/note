@@ -1,7 +1,5 @@
 :root {
 	color-scheme: light dark;
-	--gray-hard: oklch(0.5 0 0 / 0.2);
-	--gray-soft: oklch(0.5 0 0 / 0.1);
 }
 
 html {
@@ -63,6 +61,10 @@ table {
 	}
 }
 
+.table-wrapper {
+	overflow: scroll;
+}
+
 em {
 	font-style: normal;
 	color: indianred;
@@ -76,10 +78,7 @@ blockquote {
 	background-color: light-dark(oklch(0.96 0 0), oklch(0.3 0 0));
 
 	ol,
-	ul {
-		margin: 0;
-	}
-
+	ul,
 	p {
 		margin: 0;
 	}
@@ -90,9 +89,6 @@ pre {
 	border-radius: 8px;
 	border: 1px solid lightgray;
 	overflow: scroll;
-}
-
-pre code {
 	tab-size: 2;
 }
 
@@ -117,6 +113,7 @@ pre code[class="color"] {
 		color: gray;
 	}
 }
+
 pre code[class="diff"] {
 	.add {
 		color: seagreen;
@@ -126,11 +123,5 @@ pre code[class="diff"] {
 	.del {
 		color: indianred;
 		background-color: antiquewhite;
-	}
-}
-
-pre code[class="text"] {
-	.comment {
-		color: gray;
 	}
 }
