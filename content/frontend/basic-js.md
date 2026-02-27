@@ -505,3 +505,36 @@ new Promise((resolve) => {
 ```
 
 ### Async and Await
+
+These new keywords dramatically simplify the use of Promises, and allow us to write Promise-based asynchronous code that looks like synchronous code.
+
+- **async**: Declare a function whose return value is a Promise. You can only use the `await` keyword within function.
+- **await**: Takes a Promise and turns it back into a return value or a thrown exception.
+
+```js
+async function f() {
+	try {
+		let v1 = await p1
+		let v2 = await p2
+	} catch (e) {}
+}
+```
+
+The equivalent Promise-based implementation is as follows:
+
+```js
+function f() {
+	return p1
+		.then((v1) => p2)
+		.then((v2) => {})
+		.catch((e) => {})
+}
+```
+
+If you want to execute them in parallel, you can use the `Promise.all()` method.
+
+```js
+async function f() {
+	let [v1, v2] = Promise.all([p1, p2])
+}
+```
