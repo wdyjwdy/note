@@ -53,7 +53,6 @@ function addTemplate(html: string, data: object) {
 async function buildFileDates() {
 	const data =
 		await Bun.$`git log --name-only --format="%ad" --date=short`.text()
-	console.log(data)
 	const lines = data.split('\n').filter((x) => x)
 	let lastdate = ''
 	for (let line of lines) {
