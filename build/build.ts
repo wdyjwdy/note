@@ -89,12 +89,13 @@ async function buildStaticFile(path: string) {
 }
 
 async function buildSearchFile(paths: string[]) {
-	const pages: object[] = []
+	const pages: any[] = []
 	for (let path of paths) {
 		const { frontmatter } = await parseContentFile(path)
 		path = path.slice(8, -3)
 		pages.push({ path, ...frontmatter })
 	}
+	pages.sort((a, b) => (a.group < b.group ? -1 : 1))
 	return pages
 }
 
