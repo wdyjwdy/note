@@ -1,4 +1,4 @@
-import { readdir, stat } from 'node:fs/promises'
+import { readdir } from 'node:fs/promises'
 import { join } from 'node:path'
 import markdownit from 'markdown-it'
 import markdownitAnchor from 'markdown-it-anchor'
@@ -10,12 +10,13 @@ const mdit = markdownit()
 	.use(markdownitTOC, { includeLevel: [2, 3] })
 	.use(markdownitPlugin)
 const template = await Bun.file('build/template.html').text()
+const dateMap = new Map<string, string>()
 
 async function parseContentFile(path: string) {
 	const text = await Bun.file(path).text()
 	const match = text.match(/^---(.*?)---/s)
 	const folder = path.split('/')[1]
-	const mtime = (await stat(path)).mtime.toISOString().slice(0, 10)
+	const mtime = dateMap.get(path)
 
 	const frontmatter = {
 		...(Bun.YAML.parse(match![1]) as any),
@@ -47,6 +48,21 @@ function addPrefix(html: string) {
 function addTemplate(html: string, data: object) {
 	data['content'] = html
 	return template.replace(/{{(.*?)}}/g, (_, v) => data[v] ?? '')
+}
+
+async function buildFileDates() {
+	const data =
+		await Bun.$`git log --name-only --format="%ad" --date=short`.text()
+	const lines = data.split('\n').filter((x) => x)
+	let lastdate = ''
+	for (let line of lines) {
+		if (/^\d{4}-\d{2}-\d{2}$/.test(line)) {
+			lastdate = line
+		} else {
+			if (dateMap.has(line)) continue
+			dateMap.set(line, lastdate)
+		}
+	}
 }
 
 async function buildIndexFile(pages: object[]) {
@@ -83,6 +99,8 @@ async function buildSearchFile(paths: string[]) {
 }
 
 async function build() {
+	await buildFileDates()
+
 	const contentPaths = await getFileNames('content')
 	await Promise.all(contentPaths.map((path) => buildContentFile(path)))
 
