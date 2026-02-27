@@ -49,9 +49,9 @@
         if (x.group !== prevGroup) {
           searchResult.insertAdjacentHTML("beforeend", `<p>${x.group}</p>`);
         }
-        let item = `<a href="${x.path}">${x.title}</a>`
+        let item = `<a href="${x.path}">${x.title}<span>${x.mtime}</span></a>`
         if (x.alias) {
-          item = `<a href="${x.path}">${x.alias.join('、')}</a>`
+          item = `<a href="${x.path}">${x.alias.join('、')}<span>${x.mtime}</span></a>`
         }
         searchResult.insertAdjacentHTML("beforeend", item);
       });
@@ -97,6 +97,16 @@
     p {
       border-bottom: 1px solid var(--gray-hard);
       margin: 0;
+    }
+
+    a {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    span {
+      color: gray;
+      flex-shrink: 0;
     }
   }
 </style>

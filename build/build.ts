@@ -1,4 +1,4 @@
-import { readdir } from 'node:fs/promises'
+import { readdir, stat } from 'node:fs/promises'
 import { join } from 'node:path'
 import markdownit from 'markdown-it'
 import markdownitAnchor from 'markdown-it-anchor'
@@ -15,10 +15,12 @@ async function parseContentFile(path: string) {
 	const text = await Bun.file(path).text()
 	const match = text.match(/^---(.*?)---/s)
 	const folder = path.split('/')[1]
+	const mtime = (await stat(path)).mtime.toISOString().slice(0, 10)
 
 	const frontmatter = {
 		...(Bun.YAML.parse(match![1]) as any),
 		folder,
+		mtime,
 	}
 	const markdown = text.slice(match![0].length)
 	return { frontmatter, markdown }
