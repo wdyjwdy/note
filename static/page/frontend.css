@@ -30,3 +30,29 @@ pre:has(code[class="seq"]) {
 		}
 	}
 }
+
+pre code {
+	.comment {
+		color: gray;
+	}
+	.red {
+		color: indianred;
+	}
+	.green {
+		color: seagreen;
+	}
+	.blue {
+		color: slateblue;
+	}
+	.gray {
+		color: gray;
+	}
+	.add {
+		color: seagreen;
+		background-color: lightgoldenrodyellow;
+	}
+	.del {
+		color: indianred;
+		background-color: antiquewhite;
+	}
+}

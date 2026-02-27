@@ -1019,7 +1019,7 @@ $ git reflog # view operation history
 
 Modify the `.git/hooks/commit-msg` file.
 
-```ts
+```js
 #!/usr/bin/env bun
 
 async function main() {
@@ -1039,7 +1039,7 @@ main();
 
 Modify the `.git/hooks/prepare-commit-msg` file.
 
-```ts
+```js
 #!/usr/bin/env bun
 
 async function main() {
