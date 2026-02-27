@@ -12,8 +12,6 @@ export default function plugin(md: any) {
 				return example(escapeContent)
 			case 'color':
 				return color(escapeContent)
-			case 'pre':
-				return pre(content)
 			case 'seq':
 				return seq(content)
 			case 'diff':
@@ -37,14 +35,6 @@ function color(code: string) {
 		.replace(/@\[([-\w]+)\]\{([^}]*)\}/g, `<span class="$1">$2</span>`)
 		.replace(/(#.*)/g, `<span class="gray">$1</span>`)
 	return `<pre><code class="color">${tmp}</code></pre>`
-}
-
-function pre(rawCode: string) {
-	return `
-		<div class="html-preview">
-			<template shadowrootmode="open">${rawCode}</template>
-		</div>
-	`
 }
 
 function seq(rawCode: string) {
