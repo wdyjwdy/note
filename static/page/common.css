@@ -67,7 +67,8 @@ table {
 
 em {
 	font-style: normal;
-	color: indianred;
+	background-color: rgba(255, 0, 0, 0.2);
+	border-radius: 4px;
 }
 
 blockquote {
@@ -94,4 +95,6 @@ pre {
 
 img {
 	max-width: min(100%, 800px);
+	display: block;
+	margin: 0 auto;
 }
