@@ -130,4 +130,43 @@ There are two common pipelined protocols: [GBN](#go-back-n-(gbn)) and [SR](#sele
 
 ### Go-Back-N (GBN)
 
+GBN is a [pipelined](#pipelining) protocol, but it limits the maximum number of packets in the pipeline to _window size_.
+
+![](network-tcp-gbn)
+
+- **Sender**: When the packet with SEQ = N is unacknowledged or timeout, retransmit packet N and all subsequent packets. When the first packet in the window is acknowledged, the window slides to the right.
+- **Receiver**: Receives in-order packets and discards out-of-order packets.
+
+```seq
+Note: Packet Loss
+Sender -> Receiver: seq=0, checksum, data
+Sender -> Receiver: seq=1, checksum, data
+Receiver -> Sender: ack=0, checksum
+Note: Retansmit
+Sender -> Receiver: seq=0, checksum, data
+Sender -> Receiver: seq=1, checksum, data
+```
+
 ### Selective Repeat (SR)
+
+A single packet error can thus cause [GBN](#go-back-n-(gbn)) to retransmit a large number of packets. The SR protocol avoids unnecessary retransmissions by retransmitting _only lost or corrupted_ packets.
+
+![](network-tcp-sr)
+
+- **Sender**: When the packet with SEQ = N is unacknowledged or timeout, retransmit only packet N.
+- **Receiver**: Receives in-order packets and discards out-of-order packets. When the first packet in the window is received, slide the window to the right.
+
+```seq
+Note: Packet Loss
+Sender -> Receiver: seq=0, checksum, data
+Sender -> Receiver: seq=1, checksum, data
+Receiver -> Sender: ack=1, checksum
+Note: Retansmit
+Sender -> Receiver: seq=0, checksum, data
+Receiver -> Sender: ack=0, checksum
+```
+
+> **Sequence Number Ambiguity**
+>
+> - Ambiguity occurs when the tail of the receiving window overlaps with the head of the sending window. The solution is to keep the window size less than half of the sequence number space.
+> - Ambiguity occurs when a delayed packet arrives. The solution is for the sender to ensure that a packet with sequence number N is no longer in the pipeline (by relying on the packet’s maximum lifetime, about 3 minutes).
