@@ -4,11 +4,16 @@ group: Network
 toc: true
 ---
 
+## Application Layer
+
+- **Locations**: Host.
+- **Protocols**: [HTTP](./network-http), [DNS](./network-dns).
+
 ## Transport Layer
 
 - **Services**: A transport-layer protocol provides for logical communication between application _processes_ running on different hosts.
 - **Locations**: Host.
-- **Protocols**: UDP, TCP.
+- **Protocols**: [UDP](./network-udp), [TCP](./network-tcp).
 
 ![](network-overview-transport-layer)
 
