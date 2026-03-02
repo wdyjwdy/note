@@ -17,7 +17,7 @@
 const config = {
 	baseX: 300,
 	baseY: 50,
-	actorWidth: 100,
+	actorWidth: 110,
 	actorHeight: 50,
 	borderWidth: 1,
 	notePadding: 10,

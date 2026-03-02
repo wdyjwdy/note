@@ -7,7 +7,10 @@ code {
 }
 
 code:not(pre code) {
-	color: seagreen;
+	background-color: whitesmoke;
+	border: 1px solid lightgray;
+	border-radius: 4px;
+	padding: 0 2px;
 }
 
 pre:has(code[class="seq"]) {
