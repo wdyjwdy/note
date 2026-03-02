@@ -8,5 +8,6 @@ watch('content', { recursive: true }, async (_, filename) => {
 })
 
 watch('static', { recursive: true }, async (_, filename) => {
+	if (!/(svg|css)$/.test(filename!)) return
 	await buildStaticFile(join('static', filename!))
 })

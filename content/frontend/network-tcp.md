@@ -260,6 +260,10 @@ Note: Retansmit
 Sender -> Receiver: seq=100
 ```
 
+> **Why 3 ACKs, rather than 2 ACKs?**
+>
+> Since TCP does not know whether a duplicate ACK is caused by a lost segment or just a reordering of segments.
+
 ### TCP Flow Control
 
 TCP uses flow control to ensure that data does not overflow the buffer.
