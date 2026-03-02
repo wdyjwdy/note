@@ -6,9 +6,9 @@ toc: true
 
 ## Overveiw
 
-1. **UDP is connectionless.** (low latency, broadcast)
-2. **UDP has no congestion control.** (high throughput)
-3. **UDP is unreliable.**
+1. UDP is connectionless. (low latency, broadcast)
+2. UDP has no congestion control. (high throughput)
+3. UDP is unreliable.
 
 ## Header
 
