@@ -9,6 +9,9 @@ toc: true
 - TCP is connection-oriented.
 - TCP is full-duplex.
 - TCP is point-to-point (broadcast is not possible).
+- TCP provides reliable data transfer.
+- TCP provides flow control.
+- TCP provides congestion control.
 
 ## Header
 
@@ -268,9 +271,70 @@ Sender -> Receiver: seq=100
 
 TCP uses flow control to ensure that data does not overflow the buffer.
 
-- **Sender**: Ensure that the amount of sent but unacknowledged data is less than the `receive window` size.
-- **Receiver**: The `receive window` size is sent to the sender through the [Window field](#header).
+- **Sender**: Ensure that the amount of sent but unacknowledged data is less than the `receive window`.
+- **Receiver**: The `receive window` is sent to the sender through the [Window field](#header).
 
 ![](network-tcp-flow-control)
 
-When the `receive window = 0`, the sender stops sending data. As a result, the window size cannot be updated, and no subsequent data can be transmitted. The solution is that when the `receive window = 0`, the sender continues to send one byte of data.
+When the `rwnd = 0`, the sender stops sending data. As a result, the window size cannot be updated, and no subsequent data can be transmitted. The solution is that when the `rwnd = 0`, the sender continues to send one byte of data.
+
+## Congestion Control
+
+TCP avoids congestion by limiting the sender's sending rate.
+
+1. **Limit the sending rate**: Ensure that the amount of sent but unacknowledged data is less than the `cwnd`.
+2. **Detect congestion**: When a packet loss occurs (timeout or 3 duplicate ACKs), it is considered as congestion.
+3. **Adjust the sending rate**: Increase `cwnd` when the network is healthy (ACK received) and decrease `cwnd` when congestion occurs (packet loss).
+
+> - **Timeout**: indicates multiple packet losses, representing _severe_ congestion.
+> - **3 Duplicate ACKs**: indicates a single packet loss, representing _mild_ congestion.
+
+### Slow Start
+
+When a TCP connection begins, set `congestion window = 1` and `slow start thresh = 40`.
+
+| Network | Event              | Action                                          |
+| ------- | ------------------ | ----------------------------------------------- |
+| 🟢      | ACK received       | `cwnd += 1`                                     |
+| 🟢      | `cwnd >= ssthresh` | congestion avoidance                            |
+| 🟡      | 3 duplicate ACKs   | `ssthresh = cwnd / 2` and `cwnd = ssthresh + 3` |
+|         |                    | and fast recovery                               |
+| 🔴      | timeout            | `ssthresh = cwnd / 2` and `cwnd = 1`.           |
+
+### Congestion Avoidance
+
+| Network | Event            | Action                                              |
+| ------- | ---------------- | --------------------------------------------------- |
+| 🟢      | ACK received     | `cwnd += 1 / cwnd`                                  |
+| 🟡      | 3 duplicate ACKs | `ssthresh = cwnd / 2` and `cwnd = ssthresh + 3`     |
+|         |                  | and fast recovery                                   |
+| 🔴      | timeout          | `ssthresh = cwnd / 2` and `cwnd = 1` and slow start |
+
+### Fast Recovery
+
+| Network | Event          | Action                                              |
+| ------- | -------------- | --------------------------------------------------- |
+| 🟢      | ACK received   | `cwnd = ssthresh` and congestion avoidance          |
+| 🟡      | duplicate ACKs | `cwnd += 1`                                         |
+| 🔴      | timeout        | `ssthresh = cwnd / 2` and `cwnd = 1` and slow start |
+
+### TCP Tahoe
+
+1. `x = 1`, `cwnd = 1`, `ssthresh = 8`, slow start.
+2. `x = 4`, congestion avoidande.
+3. `x = 8`, 3 duplicate ACKs.
+4. `x = 9`, `cwnd = 1`, `ssthresh = 6`, slow start.
+5. `x = 12`, congestion avoidande.
+
+![](network-tcp-tahoe)
+
+### TCP Reno
+
+1. `x = 1`, `cwnd = 1`, `ssthresh = 8`, slow start.
+2. `x = 4`, congestion avoidande.
+3. `x = 8`, 3 duplicate ACKs.
+4. `x = 9`, `cwnd = 9`, `ssthresh = 6`, congestion avoidande.
+5. `x = 11`, ACK received.
+6. `x = 12`, congestion avoidande.
+
+![](network-tcp-reno)
