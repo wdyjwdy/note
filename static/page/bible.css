@@ -1,0 +1,12 @@
+html {
+	font-family: Hiragino Sans GB;
+}
+
+code {
+	font-family: Hiragino Sans GB;
+	white-space: pre-line;
+
+	.comment {
+		color: oklch(0.5 0 0 / 0.5);
+	}
+}

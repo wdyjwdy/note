@@ -284,7 +284,7 @@ class Stack {
 
 The goal of modular programming is to allow large programs to be assembled using modules of code from disparate authors and sources.
 
-1. Modules in Node (Common JS, CJS)
+1. Modules in Node (Common JS, CJS, `.cjs`)
 
 ```js
 // Export
@@ -294,7 +294,7 @@ module.exports = { fn }
 const { fn } = require('./test.js')
 ```
 
-2. Modules in ES6 (EcmaScript Modules, ESM)
+2. Modules in ES6 (EcmaScript Modules, ESM, `.mjs`)
 
 ```js
 // Export
