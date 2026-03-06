@@ -28,12 +28,12 @@ a {
 	}
 }
 
-ul {
+ul:not(li ul) {
 	padding-left: 22px;
 	list-style: circle;
 }
 
-ol {
+ol:not(li ol) {
 	padding-left: 30px;
 }
 
@@ -98,4 +98,15 @@ img {
 	max-width: min(100%, 800px);
 	display: block;
 	margin: 0 auto;
+}
+
+.table-of-contents {
+	li {
+		margin: 0;
+	}
+
+	a {
+		display: flex;
+		padding: 5px 0;
+	}
 }
