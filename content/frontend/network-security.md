@@ -91,6 +91,16 @@ Bob -> Alice: R
 Alice -> Bob: m, K(R)
 ```
 
+## MAC
+
+If Alice and Bob already share a key `s`, they can use a Message Authentication Code (MAC) to ensure integrity. One nice feature of a MAC is that it does not require an encryption algorithm.
+
+- Alice: `mac = H(m + s)`
+
+```seq
+Alice -> Bob: m, H(m + s)
+```
+
 ## Encryption Algorithms
 
 **Symmetric Encryption** uses the same key for both encryption and decryption. (two parties must somehow agree on a shared key.)
