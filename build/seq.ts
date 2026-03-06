@@ -72,7 +72,7 @@ function render(text: string) {
 	const defs = `<defs><marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" /></marker></defs>`
 
 	const content = defs + actorsSVG + singalsSVG
-	return `<svg viewBox="${viewBox.join(' ')}" style="max-width: ${viewBox[2]};">${content}</svg>`
+	return `<svg viewBox="${viewBox.join(' ')}" style="max-width: ${viewBox[2]}px;">${content}</svg>`
 }
 
 function renderNoteText(X: number, Y: number, text: string) {
