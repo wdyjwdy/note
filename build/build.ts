@@ -95,7 +95,13 @@ async function buildSearchFile(paths: string[]) {
 		path = path.slice(8, -3)
 		pages.push({ path, ...frontmatter })
 	}
-	pages.sort((a, b) => (a.group < b.group ? -1 : 1))
+	pages.sort((a, b) => {
+		if (a.group === b.group) {
+			return a.title < b.title ? -1 : 1
+		} else {
+			return a.group < b.group ? -1 : 1
+		}
+	})
 	return pages
 }
 

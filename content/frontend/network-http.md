@@ -4,6 +4,10 @@ group: Network
 toc: true
 ---
 
+## Overview
+
+- HTTP is stateless.
+
 ## Messages
 
 1. HTTP Request Message
@@ -202,3 +206,16 @@ Compressing using the HPACK algorithm reduces the header size.
 ## HTTP 3
 
 TCP and TLS requires two handshake phases. QUIC performs both the connection setup and encryption setup in 1 RTT. QUIC can use the previously stored session and encryption parameters, allowing data transmission without waiting for a full handshake.
+
+## Appendix
+
+### Status Code
+
+- `200 OK`: Operation successful.
+- `301 Moved Permanently`: The resource has been permanently moved to a new location.
+- `304 Not Modified`: The resource has not been modified. ([Web Caching](#web-caching))
+- `400 Bad Request`: The request contains a syntax error.
+- `401 Unauthorized`: Authentication is required.
+- `403 Forbidden`: You do not have permission.
+- `404 Not Found`: Resource not found.
+- `500 Internal Server Error`: Server has bug.
