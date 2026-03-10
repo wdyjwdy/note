@@ -58,4 +58,8 @@ Server -> Client: 200 OK
 5. **Caching**: GET requests can be cached, POST requests cannot.
 6. **Back/reload operations**: GET supports them safely, POST does not (may resubmit the form).
 7. **History and favorites**: GET is supported, POST is not.
-8. **Latency**: GET is faster (2 RTT), POST is slower (3 RTT).
+8. **Latency**: GET is faster (2 RTT), POST is slower (3 RTT, or 4 RTT, [option request](#option))).
+
+## Option
+
+The OPTIONS method is commonly used for CORS [preflight requests](basic-security#preflight-request).
