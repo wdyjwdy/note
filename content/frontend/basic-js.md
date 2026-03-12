@@ -475,35 +475,6 @@ Promise.reject(1)
 	.catch((v) => console.log(v)) // 1
 ```
 
-#### Event Loop
-
-JavaScript is single-threaded, and all tasks must be queued for execution. There are two types of tasks as follows:
-
-1. **macrotask**: script, setTimeout, setInterval, I/O, UI Rendering
-2. **microtask**: Promise.then, queueMicrotask, process.nextTick (Node)
-
-The order of task execution is as follows:
-
-1. Execute synchronous code.
-2. Execute all microtasks.
-3. Execute one macrotask.
-4. Return to step 2.
-
-```js
-console.log('script 1')
-setTimeout(() => {console.log('macrotask')}, 0)
-new Promise((resolve) => {
-  console.log('script 2')
-  resolve()
-})
-.then(() => {console.log('microtask')})
- 
-// script 1
-// script 2
-// microtask
-// macrotask
-```
-
 ### Async and Await
 
 These new keywords dramatically simplify the use of Promises, and allow us to write Promise-based asynchronous code that looks like synchronous code.
