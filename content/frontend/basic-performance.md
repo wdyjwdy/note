@@ -65,6 +65,7 @@ Optimization:
 
 - Reduce repaints: avoid frequently changing colors.
 - Layered rendering.
+- Lazy Load.
 
 ## Event Loop
 
@@ -127,3 +128,39 @@ One advantage of event bubbling is that it enables **event delegation**. We can 
   }
 </script>
 ```
+
+## Metrics
+
+![](basic-performance-metrics)
+
+### TTFB
+
+Time To First Byte (TTFB) is the moment when the first byte is received.
+
+- Database: build Index, less Join
+- DNS
+  - DNS Prefetch
+  - [CDN](network-cdn)
+- HTTP
+  - [Web Caching](network-http#web-caching)
+  - QUIC
+
+### FCP
+
+First Contentful Paint (FCP) is the moment when content is first rendered on the screen.
+
+- Eliminate Blocking
+  - JS: defer or async
+  - CSS: preload
+- Asset
+  - Resource Size: Tree Shaking, Minify, Code Splitting, GZip, WebP
+  - Request Count: Bundling
+
+### LCP
+
+Largest Contentful Paint (LCP) is the moment when the largest content is rendered on the screen.
+
+- Prioritize Loading
+  - Image: preload and fetchpriority, fixed size
+  - Critical Resources: inline JS and CSS
+- SSR
