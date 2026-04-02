@@ -45,7 +45,7 @@ pre code {
 		color: seagreen;
 	}
 	.blue {
-		color: slateblue;
+		color: cornflowerblue;
 	}
 	.gray {
 		color: gray;
@@ -57,5 +57,9 @@ pre code {
 	.del {
 		color: indianred;
 		background-color: antiquewhite;
+	}
+	.mod {
+		color: darkgoldenrod;
+		background-color: lightgoldenrodyellow;
 	}
 }

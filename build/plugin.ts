@@ -20,6 +20,8 @@ export default function plugin(md: any) {
 				return sql(escapeContent)
 			case 'js':
 				return js(escapeContent)
+			case 'ts':
+				return js(escapeContent)
 			case 'rs':
 				return js(escapeContent)
 			default:
