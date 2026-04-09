@@ -191,6 +191,252 @@ borrow.print();
 (*borrow).print();
 ```
 
+## Enum
+
+Enums in Rust have two main advantages:
+
+- They can store data.
+- Variants can have different types.
+
+```rs
+enum IP {
+	v4(u8, u8, u8, u8),
+	v6(String),
+}
+```
+
+### Match
+
+Rust uses `match` to execute code based on different patterns.
+
+```rs
+fn get_type(&self) -> &str {
+	match self {
+		Self::v4(..) => "ipv4",
+		Self::v6(..) => "ipv6",
+	}
+}
+```
+
+You can also execute multiple lines of code.
+
+```rs
+fn get_type(&self) {
+	match self {
+		Self::v4(..) => {
+			println!("ipv4");
+		}
+		Self::v6(..) => {
+			println!("ipv6");
+		}
+	}
+}
+```
+
+You can extract values out of enum variants.
+
+```rs
+fn get_value(&self) {
+	match self {
+		Self::v4(a, b, c, d) => {
+			println!("{a}.{b}.{c}.{d}");
+		}
+		Self::v6(a) => {
+			println!("{a}");
+		}
+	}
+}
+```
+
+You can use a catch-all pattern.
+
+```rs
+let num = 1;
+let result = match num {
+	1 => 1,
+	2 => 2,
+	_ => 0,
+};
+```
+
+### If Let and Let Else
+
+`if let` is a shorthand for ignoring remaining values.
+
+```rs
+let num = Some(1);
+
+// original
+match num {
+	Some(value) => println!("{value}"),
+	_ => (),
+}
+
+// shorthand
+if let Some(value) = num {
+	println!("{value}");
+}
+```
+
+You can include an `else` with an `if let`.
+
+```rs
+let num = Some(1);
+
+// original
+match num {
+	Some(value) => println!("{value}"),
+	_ => println!("NaN"),
+}
+
+// shorthand
+if let Some(value) = num {
+	println!("{value}");
+} else {
+	println!("NaN");
+}
+```
+
+`let else` is a shorthand for early returns.
+
+```rs
+let num = Some(1);
+
+// original
+let value = if let Some(x) = num { x } else { return };
+
+// shorthand
+let Some(value) = num else { return };
+```
+
+### Option
+
+Rust does not have `null`, but it can be represented using an `enum`.
+
+- When we have a `Some` value, we know that a value is present.
+- When we have a `None` value, we don't have a valid value.
+
+```rs
+enum Option<T> {
+	None,
+	Some(T),
+}
+```
+
+When you use that value, you are required to explicitly handle the case when the value is null.
+
+```rs
+let num = Some(1);
+match num {
+	None => {
+		println!("null");
+	}
+	Some(x) => {
+		println!("{x}");
+	}
+}
+```
+
+### Result
+
+```rs
+enum Result<T, E> {
+	Ok(T),
+	Err(E),
+}
+```
+
+```rs
+match File::open("hello.txt") {
+	Ok(..) => println!("file open"),
+	Err(..) => panic!("file not exist"),
+}
+```
+
+## Crate
+
+- Binary Crate: programs you can compile to an executable, must have a `main` function.
+- Library Crate: provide utility functions across multiple projects, no `main` function.
+
+### Mod
+
+We define a module with the `mod` keyword.
+
+```rs
+pub mod math {
+	pub mod basic {
+		pub fn sum() {}
+	}
+}
+```
+
+We use a path `::` to find an item.
+
+```rs
+fn test() {
+	crate::math::basic::sum(); // absolute path
+	math::basic::sum();        // relative path
+}
+```
+
+We can create a shortcut to a path with the `use` keyword.
+
+```rs
+use crate::math::basic;
+
+fn test() {
+	basic::sum(); // shortcut
+}
+```
+
+## Functional Programming
+
+### Closures
+
+Rust's closures are anonymous functions you can save in a variable or pass as arguments to other functions. Unlike functions, closures can _capture values_ from the scope in which they're defined.
+
+```rs
+let c = |x: i32| -> i32 { x }; // closure with type annotations
+let c = |x| x;                 // closure without type annotations
+```
+
+A closure's type is fixed the first time it is used.
+
+```rs
+let c = |x| x;
+let v1 = c(0);
+let v2 = c(true); // error
+```
+
+Ownership of captured variables is inferred through the closure's body implementation. You can use `move` keyword to force the closure to take ownership.
+
+```rs
+let mut s = String::from("hello");
+
+let c = || println!("{}", s);      // &s,     trait: Fn
+let c = || s.push_str("hi");       // &mut s, trait: FnMut
+let c = || s;                      // s,      trait: FnOnce
+let c = move || println!("{}", s); // s,      trait: Fn
+```
+
+Ownership transfer occurs at definition, not at invocation.
+
+```rs
+let s = String::from("hello");
+let c = || println!("{}", s); // move
+c();
+```
+
+### Iterators
+
+```rs
+let arr = vec![1, 2, 3];
+let iter = arr.iter();
+for i in iter {
+	println!("{}", i);
+}
+```
+
 ## Appendix
 
 ### Stack and Heap

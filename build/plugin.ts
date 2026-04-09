@@ -1,8 +1,6 @@
 import { seqSVG } from './seq'
 
 export default function plugin(md: any) {
-	const defaultFence = md.renderer.rules.fence
-
 	md.renderer.rules.fence = (tokens, idx, options, env, self) => {
 		const { content, info } = tokens[idx]
 		const escapeContent = md.utils.escapeHtml(content)
@@ -16,16 +14,8 @@ export default function plugin(md: any) {
 				return seq(content)
 			case 'diff':
 				return diff(escapeContent)
-			case 'sql':
-				return sql(escapeContent)
-			case 'js':
-				return js(escapeContent)
-			case 'ts':
-				return js(escapeContent)
-			case 'rs':
-				return js(escapeContent)
 			default:
-				return defaultFence(tokens, idx, options, env, self)
+				return other(escapeContent, info)
 		}
 	}
 
@@ -61,16 +51,12 @@ function seq(rawCode: string) {
 function diff(code: string) {
 	const tmp = code
 		.replace(/(\+.*)/g, `<span class="add">$1</span>`)
-		.replace(/(\-.*)/g, `<span class="del">$1</span>`)
+		.replace(/(-.*)/g, `<span class="del">$1</span>`)
 	return `<pre><code class="diff">${tmp}</code></pre>`
 }
 
-function sql(code: string) {
-	const tmp = code.replace(/(--.*)/g, `<span class="comment">$1</span>`)
-	return `<pre><code class="sql">${tmp}</code></pre>`
-}
-
-function js(code: string) {
-	const tmp = code.replace(/(\/\/.*)/g, `<span class="comment">$1</span>`)
-	return `<pre><code class="js">${tmp}</code></pre>`
+function other(code: string, name: string) {
+	name = name === '' ? 'text' : name
+	const tmp = code.replace(/(\/\/.*|#.*|--.*)/g, `<span class="comment">$1</span>`)
+	return `<pre><code class="${name}">${tmp}</code></pre>`
 }

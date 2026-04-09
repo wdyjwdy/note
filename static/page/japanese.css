@@ -9,6 +9,23 @@ h1 {
 h3 {
 	font-family: Hiragino Mincho ProN;
 	font-weight: normal;
+
+	&::before {
+		content: '接続';
+		background-color: rgb(255, 236, 239);
+		border: 1px solid rgb(255, 196, 226);
+		border-radius: 6px;
+		padding: 0px 4px;
+		color: rgb(179, 108, 119);
+	}
+}
+
+ul li {
+	list-style: disc;
+
+	&::marker {
+		color: seagreen;
+	}
 }
 
 code {
