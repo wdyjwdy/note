@@ -158,6 +158,77 @@ fn main() {
 }
 ```
 
+### Lifetimes
+
+A lifetime is a kind of generic starting with a `'`. Every reference in Rust has a lifetime, which is the scope for which that reference is valid. Lifetime annotations don't change how long any of the references live.
+
+```rs
+fn test<'a, 'b>() {
+	let s1: &'a str;   // 'a annotates the lifetime of s1
+	{
+		let s2: &'b str; // 'b annotates the lifetime of s2
+	}
+}
+```
+
+The main aim of lifetimes is to prevent dangling references. At compile time, Rust detects that the scope of `r` exceeds the lifetime of `&n`, so it throws an error.
+
+```rs
+fn main() {
+	let r;
+	{
+		let n = 0;
+		r = &n;
+	}
+	println!("{}", r); // error, n has already been dropped
+}
+```
+
+For functions with multiple parameters, Rust cannot determine the lifetime of the return value, so it cannot perform compile time checks.
+
+```rs
+fn main() {
+	let result;
+	let s1 = String::from("hello");
+	{
+		let s2 = String::from("hi");
+		result = longest(&s1, &s2); // Rust cannot perform check
+	}
+	println!("{}", result);
+}
+
+fn longest(x: &str, y: &str) -> &str { // Rust cannot determine the lifetime
+	if x.len() > y.len() { x } else { y }
+}
+```
+
+We can constrain the lifetime of the return value using lifetime annotations. When the arguments are passed in, `'a` is replaced with the intersection of the lifetimes of `x` and `y`.
+
+```rs
+fn longest<'a>(x: &'a str, y: &'a str) -> &'a str { // 'a = intersect('x, 'y)
+	if x.len() > y.len() { x } else { y }
+}
+```
+
+In the following two cases, Rust automatically infers lifetimes:
+
+- Single-parameter function
+- Instance methods
+
+```rs
+fn test(x: &str) -> &str {}
+fn test<'a>(x: &'a str) -> &'a str {}
+
+fn test(&self, x: &str) -> &str {}
+fn test<'a>(&'a self, x: &str) -> &'a str {}
+```
+
+`'static` is a special lifetime that indicates a value can live for the entire duration of the program.
+
+```rs
+let s: &'static str = "hello";
+```
+
 ## Structs
 
 ### Automatic Referencing And Dereferencing
