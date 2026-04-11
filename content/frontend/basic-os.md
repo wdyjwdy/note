@@ -1,12 +1,38 @@
 ---
-title: Linux
+title: Operating System
 group: Basic
 toc: true
 ---
 
-## Links
+## Memory
 
-![](basic-linux-link)
+![](basic-os-memory)
+
+### Stack
+
+The allocation and deallocation of stack memory is _automatically_ managed by the compiler.
+
+```c
+void fn() {
+  int a = 0; // auto malloc
+} // auto free
+```
+
+### Heap
+
+The allocation and deallocation of heap memory must be managed _manually_.
+
+```c
+void fn() {
+  int *a = malloc(4); // manual malloc
+  *a = 0;
+  free(a); // manual free
+}
+```
+
+## Link
+
+![](basic-os-link)
 
 ### Hard Link
 
