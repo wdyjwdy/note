@@ -4,6 +4,45 @@ group: Basic
 toc: true
 ---
 
+## Basic
+
+### Statements
+
+- Statements do not return a value.
+
+```rs
+fn hello() {} // function definition
+let x = 0;    // assigning a value
+```
+
+### Expressions
+
+- Expressions evaluate to a value.
+- Expressions do not include ending semicolons.
+- Expressions can be part of statements.
+- Adding a semicolon to an expression turns it into a statement.
+
+```rs
+1 + 1          // math operation
+hello()        // calling a function
+println!("hi") // calling a macro
+{              // new scope block (return the last expression implicitly)
+	0
+}
+```
+
+### Control Flow
+
+`if` is an [expression](#expressions), so it returns a value.
+
+```rs
+let x = if condition { 1 } else { 0 };
+
+fn hello(condition: bool) -> i32 {
+	if condition { 1 } else { 0 }
+}
+```
+
 ## Memory Management
 
 Other languages manage memory through manual allocation, garbage collection, or reference counting, whereas Rust uses ownership.
