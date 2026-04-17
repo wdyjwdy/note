@@ -86,14 +86,6 @@ blockquote {
 	}
 }
 
-pre {
-	padding: 6px 10px;
-	border-radius: 8px;
-	border: 1px solid lightgray;
-	overflow: scroll;
-	tab-size: 2;
-}
-
 img {
 	max-width: min(100%, 800px);
 	display: block;

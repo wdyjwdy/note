@@ -2,6 +2,14 @@ html {
 	font-family: Hiragino Mincho ProN;
 }
 
+pre {
+	border-left: 1px solid;
+	margin-left: 2em;
+	padding: 6px 10px;
+	tab-size: 2;
+	overflow: scroll;
+}
+
 code {
 	font-family: PT Mono;
 }
@@ -13,7 +21,7 @@ code:not(pre code) {
 	padding: 0 4px;
 }
 
-pre:has(code[class="seq"]) {
+pre:has(code[class='seq']) {
 	border: none;
 	text-align: center;
 
