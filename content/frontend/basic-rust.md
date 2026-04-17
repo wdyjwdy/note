@@ -57,7 +57,7 @@ fn main() {
 } // free s
 ```
 
-When a variable is assigned, Rust does not copy the heap data, making memory usage efficient. However, this means two variables could point to the same heap memory, and freeing the memory twice would cause an error.
+However, freeing memory twice will cause an error.
 
 ```rs
 fn main() {
@@ -66,7 +66,7 @@ fn main() {
 } // free s, t (error)
 ```
 
-Rust solves this by _invalidating the first_ variable’s reference to the data after assignment.
+To ensure memory safety, Rust will _invalidates_ the first variable. (known as a "move")
 
 ```rs
 fn main() {
@@ -93,16 +93,16 @@ fn main() {
 } // free s, t
 ```
 
-Function parameters also transfer ownership.
+Function parameters and return values can also transfer ownership.
 
 ```rs
 fn main() {
 	let s = String::from("hello");
-	let t = take_back(s); // s was moved to x
+	let t = take_back(s); // s is moved to x
 }
 
 fn take_back(x: String) -> String {
-	x // x was moved to t
+	x // x is moved to t
 }
 ```
 
@@ -113,26 +113,28 @@ Moving ownership into and out of functions is cumbersome.
 ```rs
 fn main() {
 	let s = String::from("hello");
-	let (len, t) = get_len(s); // move into
+	let (n, t) = len(s); // move into
 }
 
-fn get_len(s: String) -> (usize, String) {
-	(s.len(), s) // move out
+fn len(x: String) -> (usize, String) {
+	(x.len(), x) // move out
 }
 ```
 
-Rust uses the `&` syntax to create references. References allow you to refer to a value _without taking ownership_ of it.
+Rust allows referencing a value _without taking ownership_ via the `&` symbol. (known as a "borrow")
 
 ```rs
 fn main() {
 	let s = String::from("hello");
-	let len = get_len(&s); // no move
+	let n = len(&s); // no move
 }
 
-fn get_len(s: &String) -> usize {
-	s.len()
+fn len(x: &String) -> usize {
+	x.len()
 }
 ```
+
+![](basic-rust-reference)
 
 Rust can also create mutable references using `&mut`.
 
@@ -143,8 +145,8 @@ fn main() {
 	println!("{}", s);
 }
 
-fn change(s: &mut String) {
-	s.push_str(" world");
+fn change(x: &mut String) {
+	x.push_str(" world");
 }
 ```
 
@@ -181,19 +183,36 @@ Slices let you reference a contiguous sequence of elements in a collection.
 
 ```rs
 fn main() {
-	let s = String::from("hello world");
-	let hello = &s[0..5]; // "hello"
+	let s = String::from("hello");
+	let o = &s[4..5]; // "o"
 }
 ```
 
-Because you cannot have both a reference and a mutable reference at the same time, you don’t have to worry about the data being modified before it is used.
+![](basic-rust-slice)
+
+Because you cannot have both a reference and a mutable reference at the same time, you don't have to worry about the data being modified before it is used.
 
 ```rs
 fn main() {
-	let mut s = String::from("hello world");
-	let hello = &s[0..5];
+	let mut s = String::from("hello");
+	let o = &s[4..5];
 	s.clear(); // error
-	println!("{hello}");
+	println!("{}", o);
+}
+```
+
+By using `&str` as a parameter, you can pass either a `&str` or a `&String`, because Rust automatically [dereferences](#automatic-referencing-and-dereferencing) the `&String`.
+
+```rs
+fn main() {
+	let s1 = String::from("hello");
+	let s2 = "hi";
+	let x = len(&s1); // &String
+	let y = len(s2);  // &str
+}
+
+fn len(x: &str) -> usize {
+	x.len()
 }
 ```
 
