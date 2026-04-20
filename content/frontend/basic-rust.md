@@ -43,6 +43,22 @@ fn hello(condition: bool) -> i32 {
 }
 ```
 
+`match` is an [expression](#expressions), so it returns a value.
+
+```rs
+let x = match Some(1) {
+	Some(..) => true,
+	None => false,
+};
+
+fn hello(x: Option<i8>) -> bool {
+	match x {
+		Some(..) => true,
+		None => false,
+	}
+}
+```
+
 ## Memory Management
 
 Other languages manage memory through manual allocation, garbage collection, or reference counting, whereas Rust uses ownership.
@@ -291,33 +307,23 @@ let s: &'static str = "hello";
 
 ### Automatic Referencing And Dereferencing
 
-```rs
-impl Counter {
-	fn increment(&mut self) {}
-	fn print(&self) {}
-}
-```
-
 When you call a method, Rust automatically adds in `&` ,`&mut` or `*` so that object matches the signature of the method.
 
 ```rs
-// automatic referencing
-counter.increment();
-counter.print();
+impl String {
+	fn len(&self) {}
+	fn clear(&mut self) {}
+}
 
-// equivalent to
-(&mut counter).increment();
-(&counter).print();
-```
+// auto-ref
+let mut s = String::new();
+s.len();   // (&s).len();
+s.clear(); // (&mut s).len();
 
-```rs
-let borrow = &counter;
-
-// automatic dereferencing
-borrow.print();
-
-// equivalent to
-(*borrow).print();
+// auto-deref, auto-ref
+let t = &mut s;
+t.len();   // (&(*(t))).len();
+t.clear(); // (&mut (*(t))).clear();
 ```
 
 ## Enum
@@ -456,14 +462,21 @@ When you use that value, you are required to explicitly handle the case when the
 
 ```rs
 let num = Some(1);
-match num {
-	None => {
-		println!("null");
-	}
-	Some(x) => {
-		println!("{x}");
-	}
-}
+let val = match num {
+	Some(x) => x,
+	None => panic!("None"),
+};
+println!("{}", val);
+```
+
+Rust provides several methods to simplify the handling of branching.
+
+```rs
+let val = num.unwrap();             // panic
+let val = num.expect("None");       // panic with message
+let val = num.unwrap_or(0);         // default value
+let val = num.unwrap_or_else(|| 0); // default closure
+let val = num.unwrap_or_default();  // type default value
 ```
 
 ### Result
